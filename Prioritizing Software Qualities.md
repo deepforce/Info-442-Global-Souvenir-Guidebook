@@ -9,8 +9,7 @@ User Efficiency stands the speed with which a user can find the most satisfying 
 Since our software is only restricted in Greater Seattle area. When it comes to other regions, it needs to be updated and maintained by software engineers in the future. Also, if there are new stores appeared, their information are required to be added in our database.
 
 #### Consistency
-
-
+We want our users to have a better browsing experience. We’ll pay attention to the layouts and the wording to make sure everything on the website is consistent with each other. It’s not only because we don’t want our users confused by inconsistent expressions but also we believe it’s a critical part of design requirement.
 
 
 
