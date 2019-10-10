@@ -1,6 +1,6 @@
 
 #### Usefullness
-Our mision is to The main purpose of this application is to solve the problem for users - to provide a single source from the souvenir selection and product/ store information. Thus, this quality is the most important in this project. 
+Our mission is to help people select the most unique gifts to their family and friends more efficiently and the main purpose of this application is to solve the problem for users - to provide a single source from the souvenir selection and product/ store information. Thus, we consider this quality the most important. 
 
 #### Consistency
 
