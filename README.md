@@ -1,4 +1,15 @@
 # Info-442-Group 8
+- Company Name
+- Company Mission
+- Company Role
+- Problem Statement
+- Revised Problem Statement
+- Solution Overview
+- Our Prototype and Interactive Details
+	* Welcome Page
+	* Home Page (Main Page)
+	* Result Page
+- Index
 
 ## Company Name:
 Global Souvenir Guidebook
@@ -38,22 +49,22 @@ After clicking on the selected shop, the shop information page pop up. There are
 
 ## Index
 * Filter
-	Product type (food, chocolates, clothes)
-	Theme(Seattle specialties)
-	Location(Store near me)
-	Targeted Customer
-	Budget 
+	* Product type (food, chocolates, clothes)
+	* Theme(Seattle specialties)
+	* Location(Store near me)
+	* Targeted Customer
+	* Budget 
 * Store List
-	Name
-	Business hours 
-	Location
-	Contact phone
-	Website 
-	Business hours 
+	* Name
+	* Business hours 
+	* Location
+	* Contact phone
+	* Website 
+	* Business hours 
 * Search Bar
-	Type in keywords
+	* Type in keywords
 * Store Details
-	Product
+	* Product
 
 
 
