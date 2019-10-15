@@ -65,6 +65,15 @@ After clicking on the selected shop, the shop information page pop up. There are
 	* Type in keywords
 * Store Details
 	* Product
+	
+	
+Requirement Example 
+* Filter button: Users can use filters (5 filters) to query the result of a list of store information. 
+* Search bar: Users can search stores with free keywords using input box
+* Users can access a specific store and product information by clicking one of the stores.
+* Users can go backward from the store information page to the search result page.
+* The home page should display a world map with certain region marks that users can select (just Seattle for the first version)
+
 
 
 
