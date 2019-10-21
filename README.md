@@ -36,15 +36,15 @@ We plan to build a web application which can provide an integrated solution for 
 ## Our Prototype and Interactive Details:
 * Welcome Page 
 Our website greets users with a home page. There is a map with click button to select cities on welcome page. Users can click on the city to enter the unique portal for this city. If the region selected is not found in the database, nothing will pop up and users will not enter the main portal. In this project, we focus on the Greater Seattle Area. 
-![Welcome Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/Untitled%20Notebook-3.jpg)
+![Welcome Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/Untitled%20Notebook-3.jpg =600x350)
 
 * Home Page (Main Page)
 After selecting the region, users enter the main portal. There are several filter bars on the left for selecting different product types, categories, locations, targeted customers and budget. On the right are listings for stores. Users can browse and select shops based on their needs. There will be a map mode as well.
-![Home Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/-nEIq0IfewCg62YXno65TxygIL437zrRUvlraHfzbDc0JBa560_Fkr_Y1ctKDLKlU0d1BoZgh_k4iLu6vEBHTGLuLNty32suSEjPyx589xtOrwX-xmwSPRKiYT4M3CXi8mw5aKaJ.png)
+![Home Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/-nEIq0IfewCg62YXno65TxygIL437zrRUvlraHfzbDc0JBa560_Fkr_Y1ctKDLKlU0d1BoZgh_k4iLu6vEBHTGLuLNty32suSEjPyx589xtOrwX-xmwSPRKiYT4M3CXi8mw5aKaJ.png =600x350)
 
 * Result Page (Main Portal)
 After clicking on the selected shop, the shop information page pop up. There are shop address, pictures and merchandise information.
-![Result Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/Untitled%20Notebook-2.jpg)
+![Result Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/Untitled%20Notebook-2.jpg =600x350)
 
 
 ## Index
