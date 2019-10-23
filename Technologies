@@ -1,0 +1,12 @@
+Technologies: 
+Fannie, Zack, Jane, Garson
+Due to time limitation, we decided to start from technologies what we already knew to the new technologies which were widely used in the real world and all of us were interested in.  
+Front end: 
+We choose to use the common front end kit: HTML, CSS, JavaScript and React.js to avoid too much learning risk.
+Zack(CTO) and Fannie(CDO) already knew HTML, CSS and JavaScript. We decide to learn more about React.js (https://github.com/facebook/react). 
+Back end: 
+We decide to use Django for the back end, which is free and has a great reputation for community support(https://github.com/django/django).
+Zack is the expert in Django. Jane will learn Django and support him.
+Django is related to Python. All of us knew Python and we want to dig deeper into Django.
+Database: 
+Considering costs, we decided to use MariaDb which is a free database resource (https://mariadb.org/about/). Moreover, all of us knew SQL. Thus, we could learn quickly in MariaDb. 
