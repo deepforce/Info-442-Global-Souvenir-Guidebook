@@ -39,32 +39,64 @@ Our website greets users with a home page. There is a map with click button to s
 ![Welcome Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/Untitled%20Notebook-3.jpg)
 
 * Home Page (Main Page)
-After selecting the region, users enter the main portal. There are several filter bars on the left for selecting different product types, categories, locations, targeted customers and budget. On the right are listings for stores. Users can browse and select shops based on their needs. There will be a map mode as well.
+After selecting the region, users enter the main portal. On top of the page is search bar which can be used to search for store name.There are several filter bars on the left for selecting different product types, categories, locations, targeted customers and budget. On the right are listings for stores. Users can browse and select shops based on their needs. There will be a map mode as well. 
 ![Home Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/-nEIq0IfewCg62YXno65TxygIL437zrRUvlraHfzbDc0JBa560_Fkr_Y1ctKDLKlU0d1BoZgh_k4iLu6vEBHTGLuLNty32suSEjPyx589xtOrwX-xmwSPRKiYT4M3CXi8mw5aKaJ.png)
+	* Filter: Users can use filters to filter results by different labels. These labels are shown as following:
+		* Product type (food, chocolates, clothes)
+			* Food
+			* Chocolate
+			* Clothes
+			* Jewelry
+			* Book/Postcard
+			* Decors
+			* Plastic
+		* Theme (Seattle specialties): Themes are related to local products, i.e. Seahawks, UW, Starbucks, etc.. For example, there is a theme called “UW” which represents products related to the university of washington.
+			* UW souvenir
+			* Coffee 
+			* Seafood
+			* Boeing souvenir
+			* MicroSoft/Amazon souvenir
+			* Seahawks
+			* Sounders
+			* Pike Place
+		* Neighborhood: Where are those stores located?
+			* University district
+			* Laurelhurst
+			* Roosevelt
+		* For whom: Who is the users giving 
+			* Family
+			* Friends
+			* Kids
+			* Colleagues
+			* Senior 
+		* Budget (Price) : This will be a price range not a specific price. Use different symbols to represent different price ranges.(e.g., $, $$, $$$)
+	* Search bar: Users can use the search bar to search for store name with any keywords. After typing in keywords in the input box and clicking on the search button, different results will be listed on this page with different keywords.
+
+	* Sorting: Users can sort results by price ascending/descending (by clicking on “sort by” button)
+
+	* Store result list:
+		* Store name
+		* Price
+		* Address
+		* Phone number
+
+
+
 
 * Result Page (Main Portal)
 After clicking on the selected shop, the shop information page pop up. There are shop address, pictures and merchandise information.
 ![Result Page](https://raw.githubusercontent.com/FannieFann/Info-442-Global-Souvenir-Guidebook/master/prototype/Untitled%20Notebook-2.jpg)
 
+Data source: When our web application is fully launched, we will ask store owners to send their information through forms to us, and store them in the database. For now, we’re mainly focusing on the front-end and back-end, so we will just make up some local mock data and save them in JSON files.
 
-## Index
-* Filter
-	* Product type (food, chocolates, clothes)
-	* Theme(Seattle specialties)
-	* Location(Store near me)
-	* Targeted Customer
-	* Budget 
-* Store List
-	* Name
-	* Business hours 
-	* Location
-	* Contact phone
-	* Website 
-	* Business hours 
-* Search Bar
-	* Type in keywords
-* Store Details
-	* Product
+	* Store Detail
+		* Store Name
+		* Location
+		* Business hours 
+		* Phone number
+		* Website 
+		* Product list
+
 	
 	
 Requirement Example 
