@@ -89,14 +89,14 @@ After clicking on the selected shop, the shop information page pop up. There are
 
 Data source: When our web application is fully launched, we will ask store owners to send their information through forms to us, and store them in the database. For now, we’re mainly focusing on the front-end and back-end, so we will just make up some local mock data and save them in JSON files.
 
-	* Store Detail
+
+* Store Detail
 		* Store Name
 		* Location
 		* Business hours 
 		* Phone number
 		* Website 
 		* Product list
-
 	
 	
 Requirement Example 
