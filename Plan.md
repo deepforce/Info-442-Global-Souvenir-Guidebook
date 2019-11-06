@@ -82,3 +82,38 @@
 -   Week 5 (Dec 1):
 	- Integrate all components and test
 	 -	Prepare for releasing
+## 5. How will you verify that you've met your requirements?
+-   All in all, we will do code review / inspections after finishing each component. And we will do code review / inspections before every merge on Github.  
+    We will do peer code review using Regular change-based code review model and mainly on Github.  
+    (Code review / inspections here are to make sure that every piece of code does not conflict with other parts and works according to the functionalities listed below.)
+    
+-   Page 1:
+	- Verify the redirect part of page 1. If it fails, users cannot go to page 2.
+		- Write an automated test for this part using Selenium. It should make sure it can go to page 2 after clicking on the button.
+	- We will not verify the map part and instruction part in the page 1 because the page 1 is a welcome page and we plan to implement only Seattle in our application. Users can click on the mark at Seattle to be redirected to the page 
+-   Page 2:
+	- Verify the Listing function. Check if the listing is in default order; check whether the listing is complete.
+		 -  Manual testing: Verify if all the stores are showing in the list in default order. Verify if all the attributes are correct in each store.
+	    - Unit testing: Verify the ListController works well in the backend. API call works.
+	- Verify the Filter function. Whether the filtered result show correctly after clicking on “Apply” button.
+	    - Manual testing: Verify the filtered result is correct.
+	    - Unit testing: Verify the FiltersController works well in the backend. API call works.
+	- Verify the Search function. Check if the search result show correctly after clicking on “Search” button.
+	    -  Manual testing: Verify the searched result is correct.
+	    - Unit testing: Verify the SearchController works well in the backend. API call works.
+	- Verify the Sorting function. Check if the sorted result show correctly after clicking on “Sort by” button.
+	    - Manual testing: Verify the sorted result is correct.
+	    - Unit testing: Verify the SortingController works well in the backend. API call works.
+	- Verify the page navigator. Check if the page navigator can work well and show different store result .
+	    - Manual testing: Verify if it can change page by clicking on different page number.
+	    - Unit testing: Verify the PageController works well in the backend. API call works.
+	- Verify redirect function. Whether clicking on one selected shop will enter the detailed shop page.
+	    -  Automated testing: Use Selenium to test usability of front-end.
+- Page 3:
+	- Verify whether the detailed shop page is the selected shop of page 2
+	   - Manual test: Check the consistency works well.
+	- Verify the shop page display all the information
+	    - Manual test: Check if the detailed information of store is listed correctly and completely.
+-   For all of the requirements, how will your verifications be integrated into your process? Will you run automated tests after every build? Before every commit? When will you conduct inspections and who will be involved?
+	-  	As “every change must be tested and approved before going to production,'' we will run tests after every commit and before every build for the production. We will run automated test after built for certain parts listed above.
+	-   The member assigned to the component will run the tests. CTO and product manager will make sure the testing results fulfill the requirements. Our reasoning is that CTO understands the technology and dependencies the best and the product manager knows the timelines. Both of them should get involved in the testing process to make sure the quality. If any problems occurred, they could decide the alternatives more effectively.
