@@ -91,13 +91,13 @@ Data source: When our web application is fully launched, we will ask store owner
 
 
 * Store Detail
-		* Store Name
-		* Location
-		* Business hours 
-		* Phone number
-		* Website 
-		* Product list
-	
+	* Store Name
+	* Location
+	* Business hours 
+	* Phone number
+	* Website 
+	* Product list
+
 	
 Requirement Example 
 * Filter button: Users can use filters (5 filters) to query the result of a list of store information. 
