@@ -24,12 +24,65 @@ async function asyncFunction(q) {
 // 	if (conn) return conn.end();
 //   }
 }
-const query = "SELECT ProductID FROM tbl_Product"
 app.use(cors());
 app.get('/', (req, res) => {
   res.send("Go to Products!");
 });
+
+// Get Products
 app.get('/products', (req, res) => {
+    pool.getConnection()
+    .then(conn => {
+            conn.query("SELECT ProductID FROM tbl_Product")
+            .then(rows => {
+                return res.json({
+                    data: rows
+                });
+            }).catch(err => {
+                conn.end();
+            })
+        }).catch(err => {
+            // not connected
+        });
+});
+
+// Get Stores List
+// app.get('/stores', (req, res) => {
+//     pool.getConnection()
+//     .then(conn => {
+//             conn.query("SELECT StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, "+
+//             "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, SunOpenTime, SunCloseTime " +
+//             "FROM tbl_Store")
+
+//             .then(rows => {
+//                 return res.json({
+//                     data: rows
+//                 });
+//             }).catch(err => {
+//                 conn.end();
+//             })
+//         }).catch(err => {
+//             // not connected
+//         });
+// });
+
+app.get('/stores', (req, res) => {
+    query = "SELECT StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, "+
+    "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, SunOpenTime, SunCloseTime " +
+    "FROM tbl_Store ";
+
+    // Exist query
+    if (!req.query.length)
+        query += "WHERE ";
+    // Theme Filter 
+    if (typeof req.query.theme != 'undefined')
+        query += "Theme = \"" + req.query.theme + "\" ";
+
+    // Neighborhood Filter
+    if (typeof req.query.neighborhood!= 'undefined')
+        query += "Neighborhood = \"" + req.query.neighborhood + "\" ";
+
+    
     pool.getConnection()
     .then(conn => {
             conn.query(query)
@@ -39,6 +92,7 @@ app.get('/products', (req, res) => {
                 });
             }).catch(err => {
                 conn.end();
+                return res.send(err);
             })
         }).catch(err => {
             // not connected
