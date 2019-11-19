@@ -2,6 +2,27 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 const mariadb = require('mariadb');
+
+const search = require('./functions/search.js')
+
+app.get('/search', function(req, res) {
+    if (typeof req.query.text !== 'undefined') {
+        search(req.query.text, function(data_items) {
+            res.send({
+                response : {
+                    items : data_items
+                }
+            })
+        })
+    } else {
+        res.send({error : '[100] Not search params text in query.'})
+    }
+})
+
+
+
+
+
 const pool = mariadb.createPool({
      user:'info', 
      password: 'ofni',
@@ -65,14 +86,17 @@ app.get('/products', (req, res) => {
 //             // not connected
 //         });
 // });
-
+// Get Stores List
 app.get('/stores', (req, res) => {
-    query = "SELECT StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, "+
-    "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, SunOpenTime, SunCloseTime " +
+    // query = "SELECT StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, "+
+    // "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, SunOpenTime, SunCloseTime " +
+    // "FROM tbl_Store ";
+
+    query = "SELECT * " +
     "FROM tbl_Store ";
 
     // Exist query
-    if (!req.query.length)
+    if (req.query.length)
         query += "WHERE ";
     // Theme Filter 
     if (typeof req.query.theme != 'undefined')
@@ -99,6 +123,10 @@ app.get('/stores', (req, res) => {
         });
 });
 
+
+// app.get()
+
 app.listen(4000, () => {
   console.log("Product server listening on port 4000");
 });
+
