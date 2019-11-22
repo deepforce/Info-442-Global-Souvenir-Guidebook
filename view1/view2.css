@@ -1,0 +1,10 @@
+.carousel {
+    position: relative;
+    display: inline;
+}
+
+.storePicture {
+    width: 400px;
+    height: 250px;
+}
+
