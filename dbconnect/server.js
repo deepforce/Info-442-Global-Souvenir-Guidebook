@@ -54,16 +54,22 @@ app.get('/', (req, res) => {
 app.get('/products', (req, res) => {
     pool.getConnection()
     .then(conn => {
-            conn.query("SELECT ProductID FROM tbl_Product")
+            conn.query("SELECT * FROM tbl_Product")
             .then(rows => {
-                return res.json({
+                return res.status(200).json({
                     data: rows
                 });
             }).catch(err => {
                 conn.end();
+                return res.status(400).json({
+                    message: "Invalid Products Retrieval"
+                });
             })
         }).catch(err => {
             // not connected
+            return res.status(500).json({
+                message: "Internal Servel Error"
+            });
         });
 });
 
@@ -92,11 +98,15 @@ app.get('/stores', (req, res) => {
     // "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, SunOpenTime, SunCloseTime " +
     // "FROM tbl_Store ";
 
-    query = "SELECT * " +
-    "FROM tbl_Store ";
+    query = "Select DISTINCT S.StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, " +
+    "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, " +
+    "SunOpenTime, SunCloseTime " +
+    "from tbl_Store S " +
+    "join tbl_Store_Product SP on S.StoreID = SP.StoreID " +
+    "join tbl_Product P on P.ProductID = SP.ProductID ";
 
     // Exist query
-    if (req.query.length)
+    if (Object.keys(req.query).length)
         query += "WHERE ";
     // Theme Filter 
     if (typeof req.query.theme != 'undefined')
@@ -106,7 +116,14 @@ app.get('/stores', (req, res) => {
     if (typeof req.query.neighborhood!= 'undefined')
         query += "Neighborhood = \"" + req.query.neighborhood + "\" ";
 
+    // For Whom Filter
+    if (typeof req.query.for_whom != 'undefined')
+        query += "ForWhom = \""+ req.query.for_whom + "\" ";
     
+    // Product Type Filter
+    if (typeof req.query.product_type != 'undefined')
+        query += "ProductType = \"" + req.query.product_type +"\"";
+
     pool.getConnection()
     .then(conn => {
             conn.query(query)
@@ -116,13 +133,41 @@ app.get('/stores', (req, res) => {
                 });
             }).catch(err => {
                 conn.end();
-                return res.send(err);
+                return res.status(400).json({
+                    message: "Invalid Stores Retrieval"
+                });
             })
         }).catch(err => {
             // not connected
+            return res.status(500).json({
+                message: "Internal Servel Error"
+            });
         });
 });
 
+// stores detail
+app.get('/stores/:storeId', (req, res) => {
+    query = "SELECT * FROM tbl_Store WHERE StoreID = \'" + req.params.storeId + "\'";
+    pool.getConnection()
+    .then(conn => {
+            conn.query(query)
+            .then(rows => {
+                return res.status(200).json({
+                    data: rows
+                });
+            }).catch(err => {
+                conn.end();
+                return res.status(400).json({
+                    message: "Invalid Stores Retrieval"
+                });
+            })
+        }).catch(err => {
+            // not connected
+            return res.status(500).json({
+                message: "Internal Servel Error"
+            });
+        });
+});
 
 // app.get()
 

@@ -9,16 +9,15 @@ var config = {
 const pool = mariadb.createPool(config);
 
 
-module.exports.query = async function (text, values, callback) {
+module.exports.query = async function (text, callback) {
   const conn = await pool.getConnection();
-  text = text+" ('"+values+"') ";
   console.log('query:', text);
-  var err;
+  
   try {
-  const res =await conn.query(text);
-    callback(err, res)
+    const res =await conn.query(text);
+    callback([], res)
   } catch (err) {
-    callback(err, res);
+    throw err;
   }
   finally {
     if (conn) return conn.end();
