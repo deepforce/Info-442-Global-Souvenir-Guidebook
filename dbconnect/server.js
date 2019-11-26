@@ -47,7 +47,7 @@ async function asyncFunction(q) {
 }
 app.use(cors());
 app.get('/', (req, res) => {
-  res.send("Go to Products!");
+  res.send("Nothings here!");
 });
 
 // Get Products
@@ -97,7 +97,20 @@ app.get('/stores', (req, res) => {
     // query = "SELECT StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, "+
     // "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, SunOpenTime, SunCloseTime " +
     // "FROM tbl_Store ";
+    
+    // pagination
+    var numRows;
+    var numPages;
+    const numPerPage = 5;
+    const page = parseInt(req.query.page,10) || 0;
+    const offset = page * numPerPage;
 
+    const row_count = numPerPage;
+    const limit = offset + ', ' + row_count;
+    const page_query = " LIMIT " + limit;
+    
+
+    // DB SQL query
     query = "Select DISTINCT S.StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, " +
     "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, " +
     "SunOpenTime, SunCloseTime " +
@@ -106,7 +119,7 @@ app.get('/stores', (req, res) => {
     "join tbl_Product P on P.ProductID = SP.ProductID ";
 
     // Exist query
-    if (Object.keys(req.query).length)
+    if (Object.keys(req.query).length > 1)
         query += "WHERE ";
     // Theme Filter 
     if (typeof req.query.theme != 'undefined')
@@ -126,17 +139,35 @@ app.get('/stores', (req, res) => {
 
     pool.getConnection()
     .then(conn => {
-            conn.query(query)
+            conn.query("SELECT count(*) as numRows FROM tbl_Store")
+            .then(function(results) {
+                numRows = results[0].numRows;
+                numPages = Math.ceil(numRows / numPerPage);
+            })
+            .then(
+            conn.query(query+page_query)
             .then(rows => {
-                return res.json({
+                var responsePayload = {
                     data: rows
-                });
+                };
+                if (page < numPages) {
+                    responsePayload.pagination = {
+                      current: page,
+                      perPage: numPerPage,
+                      previous: page > 0 ? page - 1 : undefined,
+                      next: page < numPages - 1 ? page + 1 : undefined
+                    }
+                  }
+                else responsePayload.pagination = {
+                    err: 'queried page ' + page + ' is >= to maximum page number ' + numPages
+                }
+                res.json(responsePayload);
             }).catch(err => {
                 conn.end();
                 return res.status(400).json({
                     message: "Invalid Stores Retrieval"
                 });
-            })
+            }))
         }).catch(err => {
             // not connected
             return res.status(500).json({
