@@ -47,23 +47,29 @@ async function asyncFunction(q) {
 }
 app.use(cors());
 app.get('/', (req, res) => {
-  res.send("Go to Products!");
+  res.send("Nothings here!");
 });
 
 // Get Products
 app.get('/products', (req, res) => {
     pool.getConnection()
     .then(conn => {
-            conn.query("SELECT ProductID FROM tbl_Product")
+            conn.query("SELECT * FROM tbl_Product")
             .then(rows => {
-                return res.json({
+                return res.status(200).json({
                     data: rows
                 });
             }).catch(err => {
                 conn.end();
+                return res.status(400).json({
+                    message: "Invalid Products Retrieval"
+                });
             })
         }).catch(err => {
             // not connected
+            return res.status(500).json({
+                message: "Internal Servel Error"
+            });
         });
 });
 
@@ -91,12 +97,30 @@ app.get('/stores', (req, res) => {
     // query = "SELECT StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, "+
     // "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, SunOpenTime, SunCloseTime " +
     // "FROM tbl_Store ";
+    
+    // pagination
+    var numRows;
+    var numPages;
+    const numPerPage = 5;
+    const page = parseInt(req.query.page,10) || 0;
+    const offset = page * numPerPage;
 
-    query = "SELECT * " +
-    "FROM tbl_Store ";
+    const row_count = numPerPage;
+    const limit = offset + ', ' + row_count;
+    const page_query = " LIMIT " + limit;
+    
+    
+    
+    // DB SQL query
+    query = "Select DISTINCT S.StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, " +
+    "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, " +
+    "SunOpenTime, SunCloseTime " +
+    "from tbl_Store S " +
+    "join tbl_Store_Product SP on S.StoreID = SP.StoreID " +
+    "join tbl_Product P on P.ProductID = SP.ProductID ";
 
     // Exist query
-    if (req.query.length)
+    if (Object.keys(req.query).length > 3)
         query += "WHERE ";
     // Theme Filter 
     if (typeof req.query.theme != 'undefined')
@@ -106,23 +130,84 @@ app.get('/stores', (req, res) => {
     if (typeof req.query.neighborhood!= 'undefined')
         query += "Neighborhood = \"" + req.query.neighborhood + "\" ";
 
+    // For Whom Filter
+    if (typeof req.query.for_whom != 'undefined')
+        query += "ForWhom = \""+ req.query.for_whom + "\" ";
     
+    // Product Type Filter
+    if (typeof req.query.product_type != 'undefined')
+        query += "ProductType = \"" + req.query.product_type +"\"";
+
+    // Order
+    if (typeof req.query.order_param != 'undefined' ) {
+        if (typeof req.query.order != 'undefined')
+            query += "Order BY " + req.query.order_param + " " +req.query.order + " ";
+        else
+            query += "Order BY " + req.query.order_param + " ";
+    }
+    
+    pool.getConnection()
+    .then(conn => {
+            conn.query("SELECT count(*) as numRows FROM tbl_Store")
+            .then(function(results) {
+                numRows = results[0].numRows;
+                numPages = Math.ceil(numRows / numPerPage);
+            })
+            .then(
+            conn.query(query+page_query)
+            .then(rows => {
+                var responsePayload = {
+                    data: rows
+                };
+                if (page < numPages) {
+                    responsePayload.pagination = {
+                      current: page,
+                      perPage: numPerPage,
+                      previous: page > 0 ? page - 1 : undefined,
+                      next: page < numPages - 1 ? page + 1 : undefined
+                    }
+                  }
+                else responsePayload.pagination = {
+                    err: 'queried page ' + page + ' is >= to maximum page number ' + numPages
+                }
+                res.json(responsePayload);
+            }).catch(err => {
+                conn.end();
+                return res.status(400).json({
+                    message: "Invalid Stores Retrieval"
+                });
+            }))
+        }).catch(err => {
+            // not connected
+            return res.status(500).json({
+                message: "Internal Servel Error"
+            });
+        });
+});
+
+// stores detail
+app.get('/stores/:storeId', (req, res) => {
+    query = "SELECT * FROM tbl_Store WHERE StoreID = \'" + req.params.storeId + "\'";
     pool.getConnection()
     .then(conn => {
             conn.query(query)
             .then(rows => {
-                return res.json({
+                return res.status(200).json({
                     data: rows
                 });
             }).catch(err => {
                 conn.end();
-                return res.send(err);
+                return res.status(400).json({
+                    message: "Invalid Stores Retrieval"
+                });
             })
         }).catch(err => {
             // not connected
+            return res.status(500).json({
+                message: "Internal Servel Error"
+            });
         });
 });
-
 
 // app.get()
 
