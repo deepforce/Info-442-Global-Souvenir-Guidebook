@@ -109,7 +109,8 @@ app.get('/stores', (req, res) => {
     const limit = offset + ', ' + row_count;
     const page_query = " LIMIT " + limit;
     
-
+    
+    
     // DB SQL query
     query = "Select DISTINCT S.StoreID, StoreName, StoreImage, Address, WeekOpenTime, WeekCloseTime, WeekOpenDay, " +
     "PhoneNum, Website, Budget, Theme, Neighborhood, SatOpenTime, SatCloseTime, " +
@@ -119,7 +120,7 @@ app.get('/stores', (req, res) => {
     "join tbl_Product P on P.ProductID = SP.ProductID ";
 
     // Exist query
-    if (Object.keys(req.query).length > 1)
+    if (Object.keys(req.query).length > 3)
         query += "WHERE ";
     // Theme Filter 
     if (typeof req.query.theme != 'undefined')
@@ -137,6 +138,14 @@ app.get('/stores', (req, res) => {
     if (typeof req.query.product_type != 'undefined')
         query += "ProductType = \"" + req.query.product_type +"\"";
 
+    // Order
+    if (typeof req.query.order_param != 'undefined' ) {
+        if (typeof req.query.order != 'undefined')
+            query += "Order BY " + req.query.order_param + " " +req.query.order + " ";
+        else
+            query += "Order BY " + req.query.order_param + " ";
+    }
+    
     pool.getConnection()
     .then(conn => {
             conn.query("SELECT count(*) as numRows FROM tbl_Store")
