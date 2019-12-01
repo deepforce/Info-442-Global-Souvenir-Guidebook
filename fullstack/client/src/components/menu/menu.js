@@ -2,6 +2,7 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import Map from '../map/map.js';
 import View1 from '../view1/view1.js'
+import View2 from '../view2/view2.js'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 // import * as serviceWorker from './serviceWorker';
 class Menu extends React.Component {
@@ -14,6 +15,9 @@ class Menu extends React.Component {
                     </Route>
                     <Route path="/view1">
                         <View1 />
+                    </Route>
+                    <Route path="/view2">
+                        <View2 />
                     </Route>
                 </Switch>
             </Router>

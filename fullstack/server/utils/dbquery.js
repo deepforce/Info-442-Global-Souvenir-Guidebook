@@ -11,7 +11,7 @@ const pool = mariadb.createPool({
 async function db_query(query, req, func) {
     var numRows;
     var numPages;
-    const numPerPage = 5;
+    const numPerPage = 6;
     const page = parseInt(req.query.page,10) || 0;
     const offset = page * numPerPage;
 

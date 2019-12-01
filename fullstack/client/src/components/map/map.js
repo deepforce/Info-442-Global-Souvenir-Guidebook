@@ -52,8 +52,8 @@ class Map extends React.Component {
       <div>
         
         {this.renderRedirect()}
-        <div class="jumbotron display-5 font-italic text-center text-white bg-dark" style={{marginBottom: 0}}>
-          <h1 class="display-3">Souvenir Guidebook</h1>
+        <div className={"jumbotron font-italic text-center"} style={{marginBottom: 0, backgroundColor: "#212121"}}>
+          <em><h1 className={"display-3"} style = {{color: "white"}}>Souvenir Guidebook</h1></em>
         </div>
         <div id="map"
         ref={this.googleMapRef}

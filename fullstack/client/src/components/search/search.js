@@ -4,18 +4,20 @@ import React from 'react';
 // import * as serviceWorker from './serviceWorker';
 
 class Search extends React.Component {
-    
+    searchButton () {
+
+    }
     render() {
     const search_style = {
         width: "60%",
         display: "inline-block"
     }
     return (  
-        <div class="jumbotron text-center">
+        <div className={"jumbotron text-center"}>
             <h1>Souvenir Guidebook</h1>
             <p>Type Anything in Your Mind!</p> 
-            <input type="text" class="form-control" style= {search_style}/>
-            <button type="button" onclick="searchButton()" class="btn btn-success">search</button>
+            <input type="text" className={"form-control"} style= {search_style}/>
+            <button type="button" onClick={this.searchButton} className={"btn btn-success"}>search</button>
         </div>
     )
     }

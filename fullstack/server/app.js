@@ -9,7 +9,10 @@ var usersRouter = require('./routes/users');
 var storesRouter = require('./routes/stores.js');
 var searchRouter = require('./routes/search.js');
 
+var cors = require('cors')
 var app = express();
+
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
