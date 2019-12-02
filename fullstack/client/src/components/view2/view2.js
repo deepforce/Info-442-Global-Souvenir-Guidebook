@@ -5,19 +5,43 @@ import ProductList from '../productlist/productlist.js'
 // import * as serviceWorker from './serviceWorker';
 
 class View2 extends React.Component {
-    
-    render() {
-    const view2style =  {
-        marginLeft: "10%",
-        marginRight: "10%"
+    constructor () {
+        super()
+        this.state = {
+            items: [],
+            isLoaded: false
+        }
+        
     }
-    return (
-        <div className="container-fluid" style = {view2style} >
-            <StoreDetail />
-            <ProductList />
-        </div>
-     
-    )
+    componentDidMount() {
+        fetch("http://localhost:3001/stores/" + this.props.location.state.id)
+        .then(res => res.json())
+        .then(json => {
+            this.setState({
+                isLoaded: true,
+                items: json
+            })
+        })
+    }
+    render() {
+        const view2style =  {
+            marginLeft: "10%",
+            marginRight: "10%"
+        }
+        var { isLoaded, items } = this.state
+        if (!isLoaded) {
+            return <div>Loading...</div>
+        }
+        else {
+        return (
+            <div className="container-fluid" style = {view2style} >
+                <StoreDetail detail = {items.data} />
+                <ProductList list = {items.productList}/>
+            </div>
+        
+        )
+        }
+
     }
 }
 

@@ -10,15 +10,9 @@ class Menu extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route exact path="/">
-                        <Map />
-                    </Route>
-                    <Route path="/view1">
-                        <View1 />
-                    </Route>
-                    <Route path="/view2">
-                        <View2 />
-                    </Route>
+                    <Route path="/" exact component = {Map}/>
+                    <Route path="/view1" component = {View1}/>
+                    <Route path="/view2" component = {View2}/>
                 </Switch>
             </Router>
         )

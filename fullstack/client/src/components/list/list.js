@@ -24,7 +24,7 @@ class List extends React.Component {
     }
 
     render() {
-        var { isLoaded, items } = this.state
+            var { isLoaded, items } = this.state
             if (!isLoaded) {
                 return <div>Loading...</div>
             }
@@ -33,7 +33,8 @@ class List extends React.Component {
                     <div className={"col-sm-9 col-md-6 col-lg-8"}>
                         <div className="container-fluid">
                             {items.map(item => 
-                            <Item key = {item.StoreID} 
+                            <Item key = {item.StoreID}
+                                  id = {item.StoreID}
                                   storename = {item.StoreName} 
                                   website = {item.Website}
                                   />)}
