@@ -58,3 +58,28 @@ function search_storename() {
       } 
   } 
 } 
+
+
+
+
+  function getOption() { 
+    selectElement = document.querySelector('#select1'); 
+    var output = document.getElementById("select1").value; 
+    // output =  
+    //   selectElement.options[selectElement.selectedIndex].value; 
+    // document.querySelector('.output').textContent = output; 
+
+    var cards = document.getElementsByClassName('col-sm-6'); 
+    var names = document.getElementsByClassName('card-title'); 
+    active_cards = [];
+  
+    for (i = 0; i < cards.length; i++) {  
+        if (!names[i].innerHTML.toLowerCase().includes(output) || active_cards.length>=PAGE_LIMIT) { 
+            cards[i].style.display="none"; 
+        } 
+        else { 
+            cards[i].style.display="inherit";
+            active_cards.push(cards[i]);                 
+        } 
+      }
+} 
