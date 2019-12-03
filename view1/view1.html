@@ -24,72 +24,138 @@
         <!--filter button here-->
         <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3 col-md-6 col-lg-4">
                             <div class="container"  style="margin-left: 20%;" >
-                                  <div>
-                                        <h3>Categories</h3>
+                                <h3>Categories</h3>
+                                 <!-- <div>
                                         <p> 
-                                                <select id="select1" onchange = "getOption()"> 
-                                                    <option value="Clothes">Clothes</option> 
-                                                    <option value="Chocolate">Chocolate</option> 
-                                                    <option value="food">food</option> 
-                                                    <option value="Jewelry">Jewelry</option> 
-                                                    <option value="coffee">coffee</option> 
-                                                    <option value="UW">UW</option> 
-                                                    <option value="Seafoods">Seafoods</option> 
-                                                    <option value="Boeing">Boeing</option> 
-                                                    <option value="Seahawk">Seahawk</option> 
-                                                    <option value="Friend">Friend</option> 
-                                                    <option value="Family">Family</option> 
-                                                    <option value="Kids">Kids</option> 
-                                                    <option value="Seniors">Seniors</option> 
+                                            <h3>Product Type</h3>
+                                            <select id="select1" onchange = "getOption()"> 
+                                                <option value="Clothes">Clothes</option> 
+                                                <option value="Chocolate">Chocolate</option> 
+                                                <option value="food">food</option> 
+                                                <option value="Jewelry">Jewelry</option> 
+                       
+
+                                            </select> 
+
+                                            <h3>Theme</h3>
+                                            <select id="select3" onchange = "getOption()"> 
+                                                <option value="coffee">coffee</option> 
+                                                <option value="UW">UW</option> 
+                                                <option value="Seafoods">Seafoods</option> 
+                                                <option value="Boeing">Boeing</option> 
+                                                <option value="Seahawk">Seahawk</option> 
+                                                <option value="Amazon">Amazon</option> 
 
 
-    
-                                                </select> 
+                                            </select> 
+
+
+                                            <h3>For Whom</h3>
+
+                                            <select id="select2" onchange = "getOption()"> 
+                                                <option value="Friend">Friend</option> 
+                                                <option value="Family">Family</option> 
+                                                <option value="Kids">Kids</option> 
+                                                <option value="Seniors">Seniors</option> 
+
+                                            </select>
                                             </p>
-                                  </div>  
-                                
-                                
 
-<!--
+                                            <h3>Neighborhood</h3>
+
+                                            <select id="select2" onchange = "getOption()"> 
+                                                <option value="University District">University District</option> 
+                                                <option value="Laurelhurst">Laurelhurst</option> 
+                                                <option value="Roosevelt">Roosevelt</option> 
+                                                <option value="downtown">downtown</option> 
+
+                                            </select>
+                                            </p> -->
                                     <div class="dropdown">
-                                            <button onclick="filterbtn()" class="dropbtn">Inspirations!</button>
-                                            <div id="filterButton" class="dropdown-content">
-                                                <a href="#">Food</a>
-                                                <a href="#">Chocolate</a>
-                                                <a href="#">Clothes</a>
-                                                <a href="#">Jewelry</a>
-                                                <a href="#">Book/Postcard</a>
-                                                <a href="#">Decors</a>
-                                                <a href="#">Plastic</a>
-                                                <a href="#">UW</a>
-                                                <a href="#">Coffee</a>
-                                                <a href="#">Seafoods</a>
-                                                <a href="#">Boeing</a>
-                                                <a href="#">Seahawk</a>
-                                                <a href="#">Friend</a>
-                                                <a href="#">Family</a>
-                                                <a href="#">Seafoods</a>
-                                                <a href="#">Kids</a>
-                                                <a href="#">Seniors</a>
-                                            </div>
-                                            </div>-->
-                            </div>
-                        </div>
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Product Type
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                        <li><a href="#">Food</a></li>
+                                        <li><a href="#">Chocolate</a></li>
+                                        <li><a href="#">Clothes</a></li>
+                                        <li><a href="#">Jewelry</a></li>
+                                        <li><a href="#">Book/Postcard</a></li>
+                                        <li><a href="#">Decors</a></li>
+                                        <li><a href="#">Plastic</a></li>
 
+                                        </ul>
+                                        </div><br></br>
+
+                                    <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Theme
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                        <li><a href="#">UW</a></li>
+                                        <li><a href="#">Coffee</a></li>
+                                        <li><a href="#">Seafoods</a></li>
+                                        <li><a href="#">Boeing</a></li>
+                                        <li><a href="#">MicroSoft/Amazon</a></li>
+                                        <li><a href="#">Seahawk</a></li>
+                                        <li><a href="#">Sounders</a></li>
+
+                                        </ul>
+                                        </div><br></br>
+
+
+                                    <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Neighborhood
+                                            <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                                <li><a href="#">University District</a></li>
+                                                <li><a href="#">Laurelhurst</a></li>
+                                                <li><a href="#">Roosevelt</a></li>
+                                                </ul>
+                                                </div><br></br>
+
+                                    <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">For Whom
+                                            <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                                <li><a href="#">Family</a></li>
+                                                <li><a href="#">Friend</a></li>
+                                                <li><a href="#">Kids</a></li>
+                                                <li><a href="#">Seniors</a></li>
+                                                </ul>
+                                                </div><br></br>
+                                </div>
+                        </div>  
+                                
                     <!--result cards here-->
-                    <div class="col-sm-8">
+                    <div class="col-sm-9 col-md-6 col-lg-8">
                             <div class="container-fluid" id="cards"></div><br>
+                        
+
                         <ul class="pager">
                                 <li class="previous"><a href="#">Previous</a></li>
                                 <li class="next"><a href="#">Next</a></li>
                         </ul>
                     </div>
 
+
+                    
+
                 </div>
-                </div>
-            </body>
+
+
+            </div>
+    
+        </body>
     
     
 </html>
+
+
+display: inline-block;
+  height: auto;
+  max-width: 100%;

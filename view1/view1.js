@@ -4,7 +4,7 @@ var active_cards = [];
 $(document).ready(function(){  
   $.getJSON("https://api.myjson.com/bins/12ubge", function(result){
     $.each(result.data, function(i, field){
-      var cardEle = "<div class='col-sm-6'> <div class='cardItem' style='width: 290px; height : 330px;'> <img class='card-img-top' src='http://img.mm4000.com/file/2/7d/ff204289f9_1044.jpg' alt='Card image cap' width='286px' height='180px'><div class='card-body'><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary'>Go somewhere</a></div></div></div>";
+      var cardEle = "<div class='col-sm-6'> <div class='cardItem' style='width: 100%; height : 350px;'> <img class='card-img-top' src='http://img.mm4000.com/file/2/7d/ff204289f9_1044.jpg' alt='Card image cap' width='100%' height='180px' padding-bottom: 100%; ><div class='card-body'><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary'>Go somewhere</a></div></div></div>";
       active_cards.push(cardEle);
       $("#cards").append(cardEle);
       $(".card-title:last").text(field.StoreName);
@@ -64,7 +64,10 @@ function search_storename() {
 
   function getOption() { 
     selectElement = document.querySelector('#select1'); 
-    var output = document.getElementById("select1").value; 
+    var output1 = document.getElementById("select1").value; 
+    var output2 = document.getElementById('select2').value;
+    var output3 = document.getElementById('select3').value;
+
     // output =  
     //   selectElement.options[selectElement.selectedIndex].value; 
     // document.querySelector('.output').textContent = output; 
@@ -74,7 +77,7 @@ function search_storename() {
     active_cards = [];
   
     for (i = 0; i < cards.length; i++) {  
-        if (!names[i].innerHTML.toLowerCase().includes(output) || active_cards.length>=PAGE_LIMIT) { 
+        if (!names[i].innerHTML.toLowerCase().includes(output1) || active_cards.length>=PAGE_LIMIT) { 
             cards[i].style.display="none"; 
         } 
         else { 
