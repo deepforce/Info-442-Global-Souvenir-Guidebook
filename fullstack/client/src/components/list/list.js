@@ -13,7 +13,8 @@ class List extends React.Component {
         }
     }
     componentDidMount() {
-        fetch("http://localhost:3001/stores")
+        // console.log(this.context)
+        fetch("http://localhost:3001/stores?page=0")
         .then(res => res.json())
         .then(json => {
             this.setState({
@@ -22,12 +23,38 @@ class List extends React.Component {
             })
         })
     }
+    componentDidUpdate(prevProps) {
+        const { filter, refresh } = this.props;
+        if (prevProps.refresh !== refresh) {
+            var basic_query = "http://localhost:3001/stores?page=0"
+            for (var i in Object.keys(filter)) {
+                if (filter[Object.keys(filter)[i]]!='')
+                    basic_query+="&"+Object.keys(filter)[i]+"="+filter[Object.keys(filter)[i]]
+            }
+            fetch(basic_query)
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    items: json.data
+                })
+            })
+        }
+      }
 
     render() {
             var { isLoaded, items } = this.state
             if (!isLoaded) {
                 return <div>Loading...</div>
             }
+            else if (items.length === 0)
+                return (
+                <div className={"col-sm-9 col-md-6 col-lg-8"}>
+                <div className="container-fluid">
+                    <p>No Results!</p>
+                </div>
+                </div>
+                )
             else {
                 return (
                     <div className={"col-sm-9 col-md-6 col-lg-8"}>
@@ -40,9 +67,9 @@ class List extends React.Component {
                                   />)}
                         </div>
                         <br />
-                        <ul class="pager">
-                                <li class="previous"><a href="#">Previous</a></li>
-                                <li class="next"><a href="#">Next</a></li>
+                        <ul className="pager">
+                                <li className="previous"><a href="#">Previous</a></li>
+                                <li className="next"><a href="#">Next</a></li>
                         </ul>
                     </div>
                 )

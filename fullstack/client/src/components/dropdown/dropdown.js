@@ -5,12 +5,12 @@ import Data from './dropdownData.js'
 // import * as serviceWorker from './serviceWorker';
 
 class Dropdown extends React.Component {
-    productComponents = Data.productTypeData.map(option => <Option key = {option.id} name = {option.name}/>)
-    themeComponents = Data.themeData.map(option => <Option key = {option.id} name = {option.name}/>)
-    neighborhoodComponents = Data.neighborhoodTypeData.map(option => <Option key = {option.id} name = {option.name}/>)
-    forwhomComponents = Data.forwhomTypeData.map(option => <Option key = {option.id} name = {option.name}/>)
-    showFilter () {
-
+    productComponents = Data.productTypeData.map(option => <Option key = {option.id} name = {option.name} type = "product_type" changeFilter = {this.props.changeFilter}/>)
+    themeComponents = Data.themeData.map(option => <Option key = {option.id} type = "theme" name = {option.name} changeFilter = {this.props.changeFilter}/>)
+    neighborhoodComponents = Data.neighborhoodTypeData.map(option => <Option key = {option.id} type = "neighborhood" name = {option.name} changeFilter = {this.props.changeFilter}/>)
+    forwhomComponents = Data.forwhomTypeData.map(option => <Option key = {option.id} type = "for_whom" name = {option.name} changeFilter = {this.props.changeFilter}/>)
+    changeList () {
+        this.props.filterkeyword = "Food"
     }
     showOptions() {
         if (this.props.id === 1)
@@ -23,16 +23,19 @@ class Dropdown extends React.Component {
             return this.forwhomComponents
     }
     render() {
-    return (  
-        <div className={"dropdown"}>
-            <button className={"btn btn-primary dropdown-toggle"} type="button" data-toggle="dropdown">{this.props.name}
+    return (
+        <div>
+        <div className="dropdown">
+            <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.props.name}
                 <span className="caret"></span>
             </button>
-            <ul className={"dropdown-menu"}>
-                <input className={"form-control"} id="myInput" type="text" placeholder="Search.." />
+            <ul className="dropdown-menu">
+                <input className="form-control" id="myInput" type="text" placeholder="Search.." />
                 {this.showOptions()}
             </ul>
         </div>
+        <br/>
+        </div>  
         
     )
     }

@@ -5,7 +5,7 @@ import React from 'react';
 
 class Search extends React.Component {
     searchButton () {
-
+        
     }
     render() {
     const search_style = {

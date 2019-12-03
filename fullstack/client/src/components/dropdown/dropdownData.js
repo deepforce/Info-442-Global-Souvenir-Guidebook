@@ -13,20 +13,34 @@ const productTypeData = [
     },
     {
         id: 4,
-        name: "Jewelry"
+        name: "Tech"
     },
     {
         id: 5,
-        name: "Book/Postcard"
+        name: "Jewelry"
     },
     {
         id: 6,
-        name: "Decors"
+        name: "Kitchen accessory"
     },
     {
         id: 7,
+        name: "Tools"
+    },
+    {
+        id: 8,
+        name: "Book/Postcard"
+    },
+    {
+        id: 9,
+        name: "Decors"
+    },
+    {
+        id: 10,
         name: "Plastic"
-    }
+    },
+    
+    
 ]
 
 const themeData = [
@@ -36,7 +50,7 @@ const themeData = [
     },
     {
         id: 2,
-        name: "Coffee"
+        name: "Starbucks"
     },
     {
         id: 3,
@@ -52,7 +66,7 @@ const themeData = [
     },
     {
         id: 6,
-        name: "Seahawk"
+        name: "Seahawks"
     },
     {
         id: 7,
@@ -67,12 +81,25 @@ const neighborhoodTypeData = [
     },
     {
         id: 2,
-        name: "Laurelhurst"
+        name: "University Village"
     },
     {
         id: 3,
-        name: "Roosevelt"
+        name: "Georgetown"
+    },
+    {
+        id: 4,
+        name: "Pike Place"
+    },
+    {
+        id: 5,
+        name: "University of Washington"
+    },
+    {
+        id: 6,
+        name: "Downtown Seattle"
     }
+
 ]
 
 const forwhomTypeData = [
@@ -86,11 +113,15 @@ const forwhomTypeData = [
     },
     {
         id: 3,
-        name: "Kids"
+        name: "Kid"
     },
     {
         id: 4,
         name: "Seniors"
+    },
+    {
+        id: 5,
+        name: "Adult"
     }
 ]
 

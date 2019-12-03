@@ -13,32 +13,34 @@ router.get('/', function(req, res, next) {
     "join tbl_Product P on P.ProductID = SP.ProductID ";
 
     // Exist query
-    if (Object.keys(req.query).length > 3)
+    if (Object.keys(req.query).length >= 2) {
         query += "WHERE ";
-    // Theme Filter 
-    if (typeof req.query.theme != 'undefined')
-        query += "Theme = \"" + req.query.theme + "\" ";
+        // Theme Filter 
+        if (typeof req.query.theme != 'undefined')
+            query += "Theme = \"" + req.query.theme + "\" " + "AND ";
 
-    // Neighborhood Filter
-    if (typeof req.query.neighborhood!= 'undefined')
-        query += "Neighborhood = \"" + req.query.neighborhood + "\" ";
+        // Neighborhood Filter
+        if (typeof req.query.neighborhood!= 'undefined')
+            query += "Neighborhood = \"" + req.query.neighborhood + "\" " + "AND ";
 
-    // For Whom Filter
-    if (typeof req.query.for_whom != 'undefined')
-        query += "ForWhom = \""+ req.query.for_whom + "\" ";
+        // For Whom Filter
+        if (typeof req.query.for_whom != 'undefined')
+            query += "ForWhom = \""+ req.query.for_whom + "\" " + "AND ";
 
-    // Product Type Filter
-    if (typeof req.query.product_type != 'undefined')
-        query += "ProductType = \"" + req.query.product_type +"\"";
-
-    // Order
-    if (typeof req.query.order_param != 'undefined' ) {
-        if (typeof req.query.order != 'undefined')
-            query += "Order BY " + req.query.order_param + " " +req.query.order + " ";
-        else
-            query += "Order BY " + req.query.order_param + " ";
+        // Product Type Filter
+        if (typeof req.query.product_type != 'undefined')
+            query += "ProductType = \"" + req.query.product_type +"\"";
+            
+        if (query.substr(query.length-4) === "AND ")
+            query = query.substr(0, query.length-4)
+        // Order
+        if (typeof req.query.order_param != 'undefined' ) {
+            if (typeof req.query.order != 'undefined')
+                query += "Order BY " + req.query.order_param + " " +req.query.order + " ";
+            else
+                query += "Order BY " + req.query.order_param + " ";
+        }
     }
-
     dbquery.db_query(query, req, function(data_items) {
         res.json(data_items);
     });
