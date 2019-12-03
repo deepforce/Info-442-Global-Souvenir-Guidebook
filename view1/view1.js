@@ -4,7 +4,7 @@ var active_cards = [];
 $(document).ready(function(){  
   $.getJSON("https://api.myjson.com/bins/12ubge", function(result){
     $.each(result.data, function(i, field){
-      var cardEle = "<div class='col-sm-6'> <div class='cardItem' style='width: 100%; height : 350px;'> <img class='card-img-top' src='http://img.mm4000.com/file/2/7d/ff204289f9_1044.jpg' alt='Card image cap' width='100%' height='180px' padding-bottom: 100%; ><div class='card-body'><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary'>Go somewhere</a></div></div></div>";
+      var cardEle = "<div class='col-sm-6'> <div class='cardItem' style='width: 100%; height : 350px;' > <img class='card-img-top' src='http://img.mm4000.com/file/2/7d/ff204289f9_1044.jpg' alt='Card image cap' width='100%' height='180px' ><div class='card-body'><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary'>Go somewhere</a></div></div></div>";
       active_cards.push(cardEle);
       $("#cards").append(cardEle);
       $(".card-title:last").text(field.StoreName);
