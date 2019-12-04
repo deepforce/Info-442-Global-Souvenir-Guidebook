@@ -6,15 +6,16 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+        
+        
         <script src="jquery-3.4.1.js"></script>
         <script src="view1.js"></script>
     </head>
     <body>
         <div class="jumbotron text-center">
                 <h1>Souvenir Guidebook</h1>
-                <p>Type Anything in Your Mind!</p> 
-                <input type="text" class="form-control" style="width:60%; display:inline-block;" id="search_box">
+                <!-- <p>Type Anything in Your Mind!</p>  -->
+                <input class="form-control" type="text" placeholder="any store name in your mind...."  aria-label="Search" class="form-control" style="width:40%; display:inline-block;" id="search_box">
                 <!--<button type="button" class="btn btn-success">search</button> -->
                 <button type="button" onclick="search_storename()" class="btn btn-success">search</button>
                 <!--define onclick search button in JS--> 
@@ -24,9 +25,9 @@
         <!--filter button here-->
         <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-3 col-md-6 col-lg-4">
-                            <div class="container"  style="margin-left: 20%;" >
-                                <h3>Categories</h3>
+                    <div class="col-lg-3">
+                            <div class="container"  style="margin-left: 40%; " >
+                               
                                  <!-- <div>
                                         <p> 
                                             <h3>Product Type</h3>
@@ -73,73 +74,166 @@
 
                                             </select>
                                             </p> -->
-                                    <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Product Type
-                                    <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                                        <li><a href="#">Food</a></li>
-                                        <li><a href="#">Chocolate</a></li>
-                                        <li><a href="#">Clothes</a></li>
-                                        <li><a href="#">Jewelry</a></li>
-                                        <li><a href="#">Book/Postcard</a></li>
-                                        <li><a href="#">Decors</a></li>
-                                        <li><a href="#">Plastic</a></li>
+                                    <h4>Product Type</h4>
+                                    <div class="custom-control custom-checkbox" size="lg">
+                                        <input type="checkbox" class="custom-control-input" id="food" >
+                                        <label class="custom-control-label" for="food">Food</label>
+                                        </div>
 
-                                        </ul>
-                                        </div><br></br>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cholocate">
+                                        <label class="custom-control-label" for="cholocate">Cholocate</label>
+                                        </div>
 
-                                    <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Theme
-                                    <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                                        <li><a href="#">UW</a></li>
-                                        <li><a href="#">Coffee</a></li>
-                                        <li><a href="#">Seafoods</a></li>
-                                        <li><a href="#">Boeing</a></li>
-                                        <li><a href="#">MicroSoft/Amazon</a></li>
-                                        <li><a href="#">Seahawk</a></li>
-                                        <li><a href="#">Sounders</a></li>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Clothes">
+                                        <label class="custom-control-label" for="Clothes">Clothes</label>
+                                        </div>
 
-                                        </ul>
-                                        </div><br></br>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Jewelry">
+                                        <label class="custom-control-label" for="Jewelry">Jewelry</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Book/Postcard">
+                                        <label class="custom-control-label" for="Book/Postcard">Book/Postcard</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Decors">
+                                        <label class="custom-control-label" for="Decors">Decors</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Plastic">
+                                        <label class="custom-control-label" for="Plastic">Plastic</label>
+                                        </div>
 
 
-                                    <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Neighborhood
-                                            <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                                                <li><a href="#">University District</a></li>
-                                                <li><a href="#">Laurelhurst</a></li>
-                                                <li><a href="#">Roosevelt</a></li>
-                                                </ul>
-                                                </div><br></br>
+                                    <h4>Theme</h4>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="UW">
+                                        <label class="custom-control-label" for="UW">UW</label>
+                                        </div>
 
-                                    <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">For Whom
-                                            <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                                                <li><a href="#">Family</a></li>
-                                                <li><a href="#">Friend</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Seniors</a></li>
-                                                </ul>
-                                                </div><br></br>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Coffee">
+                                        <label class="custom-control-label" for="Coffee">Coffee</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Seafoods">
+                                        <label class="custom-control-label" for="Seafoods">Seafoods</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Boeing">
+                                        <label class="custom-control-label" for="Boeing">Boeing</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="MicroSoft/Amazon">
+                                        <label class="custom-control-label" for="MicroSoft/Amazon">MicroSoft/Amazon</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Seahawk">
+                                        <label class="custom-control-label" for="Seahawk">Seahawk</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Sounders">
+                                        <label class="custom-control-label" for="Sounders">Sounders</label>
+                                        </div>
+
+
+
+                                    <h4>Neighborhood</h4>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="University District">
+                                        <label class="custom-control-label" for="University District">University District</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Laurelhurst">
+                                        <label class="custom-control-label" for="Laurelhurst">Laurelhurst</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Roosevelt">
+                                        <label class="custom-control-label" for="Roosevelt">Roosevelt</label>
+                                        </div>
+                                    
+                                    
+                                    <h4>For Whom</h4>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Family">
+                                        <label class="custom-control-label" for="Family">Family</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Friend">
+                                        <label class="custom-control-label" for="Friend">Friend</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Kids">
+                                        <label class="custom-control-label" for="Kids">Kids</label>
+                                        </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Seniors">
+                                        <label class="custom-control-label" for="Seniors">Seniors</label>
+                                        </div>
+
                                 </div>
                         </div>  
                                 
                     <!--result cards here-->
-                    <div class="col-sm-9 col-md-6 col-lg-8">
-                            <div class="container-fluid" id="cards"></div><br>
-                        
+                    <div class="col-lg-8">
+                            <!-- <div class="container-fluid" id="cards"></div><br> -->
 
-                        <ul class="pager">
-                                <li class="previous"><a href="#">Previous</a></li>
-                                <li class="next"><a href="#">Next</a></li>
-                        </ul>
+                        
+                            <div class="container-fluid" >
+                                <div class="row">
+                                        <div class="col-md-7">
+                                            <a href=" ">
+                                            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="" width="100%">
+                                            </a >
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h3>Store Name</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p >
+                                            <a class="btn btn-primary" href="#">Store Info</a >
+                                        </div>
+                                        </div><br></br>
+
+
+                                <div class="row">
+                                        <div class="col-md-7">
+                                            <a href=" ">
+                                            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="" width="100%">
+                                            </a >
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h3>Store Name</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p >
+                                            <a class="btn btn-primary" href="#">Store Info</a >
+                                        </div>
+                                        </div>
+                                <ul class="pager">
+                                        <li class="previous"><a href="#">Previous</a></li>
+                                        <li class="next"><a href="#">Next</a></li>
+                                        </ul>
+                                
+                            </div>
+                             
+                            <!-- <ul class="pager">
+                                    <li class="previous"><a href="#">Previous</a></li>
+                                    <li class="next"><a href="#">Next</a></li>
+                            </ul> -->
+                        
                     </div>
 
 
