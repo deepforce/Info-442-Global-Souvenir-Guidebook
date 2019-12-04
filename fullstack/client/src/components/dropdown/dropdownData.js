@@ -17,7 +17,7 @@ const productTypeData = [
     },
     {
         id: 5,
-        name: "Jewelry"
+        name: "Coffee"
     },
     {
         id: 6,
@@ -25,22 +25,20 @@ const productTypeData = [
     },
     {
         id: 7,
-        name: "Tools"
+        name: "Book"
     },
     {
         id: 8,
-        name: "Book/Postcard"
+        name: "Art"
     },
     {
         id: 9,
-        name: "Decors"
+        name: "Others"
     },
     {
         id: 10,
-        name: "Plastic"
-    },
-    
-    
+        name: "Toy"
+    }
 ]
 
 const themeData = [
@@ -71,7 +69,24 @@ const themeData = [
     {
         id: 7,
         name: "Sounders"
+    },
+    {
+        id: 8,
+        name: "Coffee"
+    },
+    {
+        id: 9,
+        name: "Art"
+    },
+    {
+        id: 10,
+        name: "Antiques"
+    },
+    {
+        id: 11,
+        name: "Others"
     }
+
 ]
 
 const neighborhoodTypeData = [
@@ -98,6 +113,18 @@ const neighborhoodTypeData = [
     {
         id: 6,
         name: "Downtown Seattle"
+    },
+    {
+        id: 7,
+        name: "Fremont"
+    },
+    {
+        id: 8,
+        name: "International District"
+    },
+    {
+        id: 9,
+        name: "West Lake Center"
     }
 
 ]

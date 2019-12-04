@@ -4,9 +4,15 @@ import React from 'react';
 // import * as serviceWorker from './serviceWorker';
 
 class Search extends React.Component {
-    searchButton () {
-        
+    constructor(props) {
+        super(props)
+        this.state = {searchtext: ""};
+        this.handleChange = this.handleChange.bind(this);
     }
+    handleChange(event) {
+        this.setState({searchtext: event.target.value})
+    }
+    
     render() {
     const search_style = {
         width: "60%",
@@ -16,8 +22,8 @@ class Search extends React.Component {
         <div className={"jumbotron text-center"}>
             <h1>Souvenir Guidebook</h1>
             <p>Type Anything in Your Mind!</p> 
-            <input type="text" className={"form-control"} style= {search_style}/>
-            <button type="button" onClick={this.searchButton} className={"btn btn-success"}>search</button>
+            <input type="text" onChange = {this.handleChange} className="form-control" style= {search_style}/>
+            <button type="button" onClick={()=>this.props.changeSearch(this.state.searchtext)} className={"btn btn-success"}>Search</button>
         </div>
     )
     }

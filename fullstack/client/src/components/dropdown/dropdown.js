@@ -30,7 +30,6 @@ class Dropdown extends React.Component {
                 <span className="caret"></span>
             </button>
             <ul className="dropdown-menu">
-                <input className="form-control" id="myInput" type="text" placeholder="Search.." />
                 {this.showOptions()}
             </ul>
         </div>

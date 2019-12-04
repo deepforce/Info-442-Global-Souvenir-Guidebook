@@ -29,8 +29,15 @@ router.get('/', function(req, res, next) {
 
         // Product Type Filter
         if (typeof req.query.product_type != 'undefined')
-            query += "ProductType = \"" + req.query.product_type +"\"";
+            query += "ProductType = \"" + req.query.product_type +"\"" + "AND ";
             
+        
+        if (typeof req.query.search_text != 'undefined')
+            query += "( MATCH(StoreName, Address, Theme, Neighborhood) AGAINST (\'" +
+            req.query.search_text + "\') " +
+            "OR MATCH(ProductName, ProductType, ForWhom) AGAINST (\'" +
+            req.query.search_text + "\'))"
+       
         if (query.substr(query.length-4) === "AND ")
             query = query.substr(0, query.length-4)
         // Order

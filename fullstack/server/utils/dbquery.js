@@ -11,7 +11,7 @@ const pool = mariadb.createPool({
 async function db_query(query, req, func) {
     var numRows;
     var numPages;
-    const numPerPage = 6;
+    const numPerPage = 10;
     const page = parseInt(req.query.page,10) || 0;
     const offset = page * numPerPage;
 
@@ -22,7 +22,7 @@ async function db_query(query, req, func) {
     const db_table = query.substring(query.search("from"))
     try {
         conn = await pool.getConnection();
-        const page_res = await conn.query("SELECT count(*) as numRows " + db_table);
+        const page_res = await conn.query("SELECT count(DISTINCT S.StoreID) as numRows " + db_table);
         // console.log(page_res); //[ {val: 1}, meta: ... ]
         numRows = page_res[0].numRows;
         numPages = Math.ceil(numRows / numPerPage);
