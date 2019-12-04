@@ -4,12 +4,31 @@ import React from 'react';
 // import * as serviceWorker from './serviceWorker';
 
 class Option extends React.Component {
-    changeData = () => {
+    constructor() {
+        super()
+        this.state = {
+            checked: false
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick() {
+        // this.state.checked = !this.state.checked
+        this.setState(function(prevState, props){
+            return {checked: !prevState.checked}
+         });
         
     }
+    componentDidUpdate(prevProps, prevState) {
+        this.props.changeFilter(this.props.type, this.props.name, this.state.checked)
+    }
     render() {
-    return (  
-        <li><a onClick = {()=>this.props.changeFilter(this.props.type, this.props.name)} className={"dropdown-item"} href={"#"}>{this.props.name}</a></li>
+    return ( 
+        <div className="custom-control custom-checkbox" size="lg">
+            <input onClick = {this.handleClick} type="checkbox" className="custom-control-input" id="food" />
+            <label className="custom-control-label">{this.props.name}</label>
+        </div>
+        // <li><a onClick = {()=>this.props.changeFilter(this.props.type, this.props.name)} className={"dropdown-item"} href={"#"}>{this.props.name}</a></li>
     )
     }
 }

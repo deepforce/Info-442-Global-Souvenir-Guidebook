@@ -15,15 +15,15 @@ class Search extends React.Component {
     
     render() {
     const search_style = {
-        width: "60%",
+        width: "40%",
         display: "inline-block"
     }
     return (  
-        <div className={"jumbotron text-center"}>
+        <div className="jumbotron text-center">
             <h1>Souvenir Guidebook</h1>
             <p>Type Anything in Your Mind!</p> 
-            <input type="text" onChange = {this.handleChange} className="form-control" style= {search_style}/>
-            <button type="button" onClick={()=>this.props.changeSearch(this.state.searchtext)} className={"btn btn-success"}>Search</button>
+            <input type="text" onChange = {this.handleChange} placeholder="any store name in your mind...." aria-label="Search" className="form-control" style= {search_style}/>
+            <button type="button" onClick={()=>this.props.changeSearch(this.state.searchtext)} className="btn btn-success">search</button>
         </div>
     )
     }

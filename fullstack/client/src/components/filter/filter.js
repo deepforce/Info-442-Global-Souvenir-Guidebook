@@ -8,11 +8,11 @@ class Filter extends React.Component {
     dropdownComponents = filterData.map(filter => <Dropdown key = {filter.id} id = {filter.id} name = {filter.name} changeFilter = {this.props.changeFilter}/>)
     render() {
     const filter_style = {
-        marginLeft: "20%"
+        marginLeft: "40%"
     }
     return (  
-                <div className={"col-sm-3 col-md-6 col-lg-4"}>
-                        <div className={"container"} style={filter_style} >
+                <div className="col-lg-3">
+                        <div className="container" style={filter_style} >
                             <h2>Categories</h2>
                                 {this.dropdownComponents}
                             <br/>

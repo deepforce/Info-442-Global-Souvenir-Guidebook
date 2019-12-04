@@ -54,8 +54,9 @@ class Map extends React.Component {
         {this.renderRedirect()}
         <div className={"jumbotron font-italic text-center"} style={{marginBottom: "0%", height: "180px"}}>
           <h1 style = {{marginTop: "6px"}}>Souvenir Guidebook</h1>
+          <p>choose one mark! </p>
         </div>
-        <div id="map"
+        <div id="map" style={{height: "600px", width: "100%"}}
         ref={this.googleMapRef}
         />
       </div>

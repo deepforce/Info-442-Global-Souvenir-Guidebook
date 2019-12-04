@@ -25,16 +25,21 @@ class Dropdown extends React.Component {
     render() {
     return (
         <div>
-        <div className="dropdown">
-            <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.props.name}
-                <span className="caret"></span>
-            </button>
-            <ul className="dropdown-menu">
+                <h4>{this.props.name}</h4>
                 {this.showOptions()}
-            </ul>
         </div>
-        <br/>
-        </div>  
+        // <div>
+        // <div className="dropdown">
+            
+        //     <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.props.name}
+        //         <span className="caret"></span>
+        //     </button>
+        //     <ul className="dropdown-menu">
+        //         {this.showOptions()}
+        //     </ul>
+        // </div>
+        // <br/>
+        // </div>  
         
     )
     }

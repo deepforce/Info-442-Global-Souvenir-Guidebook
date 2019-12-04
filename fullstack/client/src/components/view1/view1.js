@@ -24,15 +24,26 @@ class View1 extends React.Component {
       // this.searchtext = ""
       // this.refresh = false
     }
-    changeFilter(filtertype, filtername) {
-      var filter = this.state.filter
-      filter[filtertype] = filtername
-      this.setState(filter)
-      this.setState({
-        refresh: !this.state.refresh
-      })
+    changeFilter(filtertype, filtername, checked) {
+      if (checked) {
+        var filter = this.state.filter
+        filter[filtertype] = filtername
+        this.setState(filter)
+        this.setState({
+          refresh: !this.state.refresh
+        })
+      }
+      else {
+        var filter = this.state.filter
+        filter[filtertype] = ""
+        this.setState(filter)
+        this.setState({
+          refresh: !this.state.refresh
+        })
+      }
       // this.state.filter[filtertype] = filtername
       // this.state.refresh = !this.state.refresh
+      console.log(checked)
       console.log(this.state.filter)
     }
 

@@ -76,7 +76,7 @@ class List extends React.Component {
             }
             else if (items.length === 0)
                 return (
-                <div className={"col-sm-9 col-md-6 col-lg-8"}>
+                <div className="col-lg-8">
                 <div className="container-fluid">
                     <p>No Results!</p>
                 </div>
@@ -90,6 +90,7 @@ class List extends React.Component {
                             <Item key = {item.StoreID}
                                   id = {item.StoreID}
                                   address = {item.Address}
+                                  phone = {item.PhoneNum}
                                   storename = {item.StoreName} 
                                   website = {item.Website}
                                   />)}
@@ -105,12 +106,13 @@ class List extends React.Component {
             }
             else if (typeof pagination.next != 'undefined') {
                 return (
-                    <div className={"col-sm-9 col-md-6 col-lg-8"}>
+                    <div className="col-lg-8">
                         <div className="container-fluid">
                             {items.map(item => 
                             <Item key = {item.StoreID}
                                   id = {item.StoreID}
                                   address = {item.Address}
+                                  phone = {item.PhoneNum}
                                   storename = {item.StoreName} 
                                   website = {item.Website}
                                   />)}
@@ -125,12 +127,13 @@ class List extends React.Component {
             }
             else if (typeof pagination.previous != 'undefined') {
                 return (
-                    <div className={"col-sm-9 col-md-6 col-lg-8"}>
+                    <div className="col-lg-8">
                         <div className="container-fluid">
                             {items.map(item => 
                             <Item key = {item.StoreID}
                                   id = {item.StoreID}
                                   address = {item.Address}
+                                  phone = {item.PhoneNum}
                                   storename = {item.StoreName} 
                                   website = {item.Website}
                                   />)}
@@ -145,12 +148,13 @@ class List extends React.Component {
             }
             else {
                 return (
-                    <div className={"col-sm-9 col-md-6 col-lg-8"}>
+                    <div className="col-lg-8">
                         <div className="container-fluid">
                             {items.map(item => 
                             <Item key = {item.StoreID}
                                   id = {item.StoreID}
                                   address = {item.Address}
+                                  phone = {item.PhoneNum}
                                   storename = {item.StoreName} 
                                   website = {item.Website}
                                   />)}
