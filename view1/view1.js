@@ -86,3 +86,5 @@ function search_storename() {
         } 
       }
 } 
+
+$('#defaultIndeterminate2').prop('indeterminate', true);
