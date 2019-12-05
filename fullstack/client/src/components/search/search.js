@@ -25,12 +25,6 @@ class Search extends React.Component {
     handleClick =()=> {
         this.setState({redirect: true})
     }
-
-    refreshPage =()=> {
-        window.location.reload(true);
-      }
-
-    
     render() {
     const search_style = {
         width: "30%",
@@ -56,7 +50,7 @@ class Search extends React.Component {
                 <span className="oi oi-home"></span>&nbsp;&nbsp;Main Portal
                 </button>
                 <span className="oi oi-caret-right" ></span>
-                <button className="btn btn-light" onClick={()=>this.refreshPage()} style={{backgroundColor: "#eee"}}>
+                <button className="btn btn-light" style={{backgroundColor: "#eee"}} >
                     Result Page
                 </button>
                 </div>
