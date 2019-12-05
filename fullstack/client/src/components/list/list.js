@@ -35,7 +35,6 @@ class List extends React.Component {
     }
     componentDidUpdate(prevProps, prevState) {
         const { filter, refresh, search} = this.props;
-        const { page_num } = this.state;
         // console.log("page_num: "+page_num)
         // console.log("p_page_num: "+prevState.page_num)
         // console.log("refresh: "+refresh)
@@ -78,7 +77,7 @@ class List extends React.Component {
                 return (
                 <div className="col-lg-8">
                 <div className="container-fluid">
-                    <p>No Results!</p>
+                    <p>No Results! Try something else!</p>
                 </div>
                 </div>
                 )

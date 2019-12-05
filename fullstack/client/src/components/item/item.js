@@ -16,14 +16,14 @@ class Item extends React.Component {
                 <div className="row">
                     <div className="col-md-7">
                         <a href=" ">
-                        <img className="img-fluid rounded mb-3 mb-md-0" src={img_url} alt="" width="100%" />
+                        <img className="img-fluid rounded mb-3 mb-md-0" src={img_url} alt="" width="100%" height="250px" />
                         </a >
                     </div>
                     <div className="col-md-5">
                         <h3>{this.props.storename}</h3>
                         <p>Phone: {this.props.phone}</p>
                         <p>Address: {this.props.address}</p >
-                        <Link to={parameters} className="btn btn-primary">Store Info</Link>
+                        <Link to={parameters} className="btn btn-primary">Details</Link>
                     </div>
                     </div>
                 <br />

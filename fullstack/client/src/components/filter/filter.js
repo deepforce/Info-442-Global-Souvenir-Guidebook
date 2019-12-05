@@ -13,7 +13,6 @@ class Filter extends React.Component {
     return (  
                 <div className="col-lg-3">
                         <div className="container" style={filter_style} >
-                            <h2>Categories</h2>
                                 {this.dropdownComponents}
                             <br/>
                         </div>

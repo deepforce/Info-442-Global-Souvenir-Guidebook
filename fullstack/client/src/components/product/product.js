@@ -5,10 +5,8 @@ import React from 'react';
 class Product extends React.Component {
     render() {
     return (
-    <div>
-    <li>{this.props.productname}</li>
-    <br></br>
-    </div>)
+        <li>{this.props.productname}</li>
+    )
     }
 }
 

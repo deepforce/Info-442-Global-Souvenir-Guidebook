@@ -26,7 +26,7 @@ class Option extends React.Component {
     return ( 
         <div className="custom-control custom-checkbox" size="lg">
             <input onClick = {this.handleClick} type="checkbox" className="custom-control-input" id="food" />
-            <label className="custom-control-label">{this.props.name}</label>
+            <label className="custom-control-label">&nbsp;{this.props.name}</label>
         </div>
         // <li><a onClick = {()=>this.props.changeFilter(this.props.type, this.props.name)} className={"dropdown-item"} href={"#"}>{this.props.name}</a></li>
     )

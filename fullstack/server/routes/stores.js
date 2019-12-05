@@ -24,12 +24,21 @@ router.get('/', function(req, res, next) {
             query += "Neighborhood = \"" + req.query.neighborhood + "\" " + "AND ";
 
         // For Whom Filter
-        if (typeof req.query.for_whom != 'undefined')
+        if (typeof req.query.for_whom != 'undefined') {
             query += "ForWhom = \""+ req.query.for_whom + "\" " + "AND ";
+        }
 
         // Product Type Filter
-        if (typeof req.query.product_type != 'undefined')
-            query += "ProductType = \"" + req.query.product_type +"\"" + "AND ";
+        if (typeof req.query.product_type != 'undefined') {
+            product_type_list = req.query.product_type.split(",")
+            for (var i = 0; i < product_type_list.length; i++) {
+                if (i==0)
+                    query += "ProductType = \"" + product_type_list[i] +"\"";
+                else
+                    query += " OR " + "ProductType = \"" + product_type_list[i] +"\"";
+            }
+            query += " AND "
+        }
             
         
         if (typeof req.query.search_text != 'undefined')

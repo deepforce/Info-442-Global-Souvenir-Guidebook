@@ -25,18 +25,25 @@ class View1 extends React.Component {
       // this.refresh = false
     }
     changeFilter(filtertype, filtername, checked) {
+      var filt = this.state.filter
       if (checked) {
-        var filter = this.state.filter
-        filter[filtertype] = filtername
-        this.setState(filter)
+        if(filt[filtertype]!=="")
+          filt[filtertype] += "," + filtername
+        else
+          filt[filtertype] += filtername
+        this.setState(filt)
         this.setState({
           refresh: !this.state.refresh
         })
       }
       else {
-        var filter = this.state.filter
-        filter[filtertype] = ""
-        this.setState(filter)
+        var one = filt[filtertype].search(","+filtername)
+        var two = filt[filtertype].search(filtername)
+        if (one != -1)
+          filt[filtertype].replace(","+filtername, "")
+        else if (two != -1)
+          filt[filtertype].replace(filtername, "")
+        this.setState(filt)
         this.setState({
           refresh: !this.state.refresh
         })

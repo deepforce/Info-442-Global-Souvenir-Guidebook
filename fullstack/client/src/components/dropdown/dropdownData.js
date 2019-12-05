@@ -5,7 +5,7 @@ const productTypeData = [
     },
     {
         id: 2,
-        name: "Chocolate"
+        name: "Accessories"
     },
     {
         id: 3,
@@ -33,11 +33,11 @@ const productTypeData = [
     },
     {
         id: 9,
-        name: "Others"
+        name: "Toy"
     },
     {
         id: 10,
-        name: "Toy"
+        name: "Others"
     }
 ]
 

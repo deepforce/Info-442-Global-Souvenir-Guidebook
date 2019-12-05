@@ -8,12 +8,11 @@ class ProductList extends React.Component {
     render() {
        
             return (
-                <div className="col-sm-6">
-                    <h1>Product Listing</h1>
-                    <ul>
+                <div>
+                    <p><b>Product Listing:</b></p>
+                    <ol>
                         {this.productComponent}
-                    </ul>
-                    <hr/>
+                    </ol>
                 </div>
         
             )
