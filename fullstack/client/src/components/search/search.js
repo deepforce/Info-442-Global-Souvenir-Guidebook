@@ -44,9 +44,17 @@ class Search extends React.Component {
         </div>
         <div >
             {this.renderRedirect()}
-            <button className="btn btn-light" onClick={this.handleClick} style={{border: "groove"}}>
-                <span className="oi oi-caret-left"></span>&nbsp;&nbsp;Back
-            </button>
+            <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
+                <div>
+                <button className="btn btn-light" onClick={()=>this.handleClick()} style={{backgroundColor: "#e3f2fd"}} >
+                <span className="oi oi-home"></span>&nbsp;&nbsp;Main Portal
+                </button>
+                <span className="oi oi-caret-right" ></span>
+                <button className="btn btn-light" style={{backgroundColor: "#e3f2fd"}} >
+                    Result Page
+                </button>
+                </div>
+                </nav>
         </div>
         </div>  
     )
