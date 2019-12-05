@@ -14,6 +14,9 @@ class View2 extends React.Component {
         }
         
     }
+    handleClick =()=> {
+        this.setState({redirect: true})
+    }
     handleChange(event) {
         this.setState({searchtext: event.target.value})
     }

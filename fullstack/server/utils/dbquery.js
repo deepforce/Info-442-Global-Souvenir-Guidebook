@@ -1,7 +1,7 @@
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
-    user:'info', 
-    password: 'ofni',
+    user:'root', 
+    password: '',
     database: 'info442_tbl',
     connectionLimit: 5
 });
