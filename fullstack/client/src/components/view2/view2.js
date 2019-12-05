@@ -66,17 +66,17 @@ class View2 extends React.Component {
                 <h1 style={{marginTop: "0px"}}>Souvenir Guidebook</h1>
                 </div>
                 {this.renderRedirect()}
-                <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
+                <nav className="navbar navbar-light" style={{backgroundColor: "#eee"}}>
                 <div>
-                <button className="btn btn-light" onClick={()=>this.handleClick(0)} style={{backgroundColor: "#e3f2fd"}} >
+                <button className="btn btn-light" onClick={()=>this.handleClick(0)} style={{backgroundColor: "#eee"}} >
                 <span className="oi oi-home"></span>&nbsp;&nbsp;Main Portal
                 </button>
                 <span className="oi oi-caret-right" ></span>
-                <button className="btn btn-light" onClick={()=>this.handleClick(1)} style={{backgroundColor: "#e3f2fd"}} >
+                <button className="btn btn-light" onClick={()=>this.handleClick(1)} style={{backgroundColor: "#eee"}} >
                     Result Page
                 </button>
                 <span className="oi oi-caret-right" ></span>
-                <button className="btn btn-light" style={{backgroundColor: "#e3f2fd"}} >
+                <button className="btn btn-light" style={{backgroundColor: "#eee"}} >
                     Detail Page
                 </button>
                 </div>
