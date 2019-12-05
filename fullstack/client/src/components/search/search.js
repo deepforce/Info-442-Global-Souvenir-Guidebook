@@ -1,18 +1,30 @@
 import React from 'react';
-
+import { Redirect } from 'react-router-dom'
 // import ReactDOM from 'react-dom';
 // import * as serviceWorker from './serviceWorker';
 
 class Search extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {searchtext: ""};
+        this.state = {
+            searchtext: "",
+            redirect: false
+        };
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange(event) {
         this.setState({searchtext: event.target.value})
     }
-    
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return (
+                <Redirect to='/' />
+            )
+        }
+    }
+    handleClick =()=> {
+        this.setState({redirect: true})
+    }
     render() {
     const search_style = {
         width: "30%",
@@ -20,8 +32,9 @@ class Search extends React.Component {
         marginTop: "0%",
         marginBottom: "0%"
     }
-    return (  
-        <div className="jumbotron text-center">
+    return (
+        <div>
+        <div className="jumbotron text-center" style={{marginBottom: "0%"}}>
             <h1>Souvenir Guidebook</h1>
             <div>
             <input type="text" onChange = {this.handleChange} placeholder="anything in your mind...." aria-label="Search" className="form-control" style= {search_style}/>
@@ -29,6 +42,13 @@ class Search extends React.Component {
             <button type="button" onClick={()=>this.props.changeSearch(this.state.searchtext)} className="btn btn-success" style={{marginTop: "0%", marginBottom: "0%"}}>search</button>
             </div>
         </div>
+        <div >
+            {this.renderRedirect()}
+            <button className="btn btn-light" onClick={this.handleClick} style={{border: "groove"}}>
+                <span className="oi oi-caret-left"></span>&nbsp;&nbsp;Back
+            </button>
+        </div>
+        </div>  
     )
     }
 }

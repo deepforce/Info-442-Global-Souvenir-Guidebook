@@ -3,6 +3,7 @@ import "./view1.css"
 import Search from '../search/search.js'
 import Filter from '../filter/filter.js'
 import List from '../list/list.js'
+
 // import ReactDOM from 'react-dom';
 // import * as serviceWorker from './serviceWorker';
 class View1 extends React.Component {
@@ -38,11 +39,16 @@ class View1 extends React.Component {
       }
       else {
         var one = filt[filtertype].search(","+filtername)
+        var three = filt[filtertype].search(filtername+",")
         var two = filt[filtertype].search(filtername)
-        if (one != -1)
-          filt[filtertype].replace(","+filtername, "")
-        else if (two != -1)
-          filt[filtertype].replace(filtername, "")
+        
+        console.log(two)
+        if (one !== -1)
+          filt[filtertype]=filt[filtertype].replace(","+filtername, "")
+        else if (three !== -1)
+          filt[filtertype]=filt[filtertype].replace(filtername+",", "")
+        else if (two !== -1)
+          filt[filtertype] = filt[filtertype].replace(filtername, "")
         this.setState(filt)
         this.setState({
           refresh: !this.state.refresh
@@ -63,12 +69,12 @@ class View1 extends React.Component {
       // this.state.refresh = !this.state.refresh
       console.log(this.state.searchtext)
     }
-
+    
     render() {
     return (
       // <FilterContext.Provider>
       <div>
-        <Search changeSearch = {this.changeSearch}/>
+        <Search changeSearch = {this.changeSearch}/>  
         <div className={"container-fluid"}>
           <div className="row">
             <Filter changeFilter = {this.changeFilter}/>
