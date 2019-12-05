@@ -4,20 +4,30 @@ import React from 'react';
 // import * as serviceWorker from './serviceWorker';
 
 class Search extends React.Component {
-    searchButton () {
-
+    constructor(props) {
+        super(props)
+        this.state = {searchtext: ""};
+        this.handleChange = this.handleChange.bind(this);
     }
+    handleChange(event) {
+        this.setState({searchtext: event.target.value})
+    }
+    
     render() {
     const search_style = {
-        width: "60%",
-        display: "inline-block"
+        width: "30%",
+        display: "inline-block",
+        marginTop: "0%",
+        marginBottom: "0%"
     }
     return (  
-        <div className={"jumbotron text-center"}>
+        <div className="jumbotron text-center">
             <h1>Souvenir Guidebook</h1>
-            <p>Type Anything in Your Mind!</p> 
-            <input type="text" className={"form-control"} style= {search_style}/>
-            <button type="button" onClick={this.searchButton} className={"btn btn-success"}>search</button>
+            <div>
+            <input type="text" onChange = {this.handleChange} placeholder="anything in your mind...." aria-label="Search" className="form-control" style= {search_style}/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" onClick={()=>this.props.changeSearch(this.state.searchtext)} className="btn btn-success" style={{marginTop: "0%", marginBottom: "0%"}}>search</button>
+            </div>
         </div>
     )
     }

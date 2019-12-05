@@ -5,7 +5,7 @@ const productTypeData = [
     },
     {
         id: 2,
-        name: "Chocolate"
+        name: "Accessories"
     },
     {
         id: 3,
@@ -13,19 +13,31 @@ const productTypeData = [
     },
     {
         id: 4,
-        name: "Jewelry"
+        name: "Tech"
     },
     {
         id: 5,
-        name: "Book/Postcard"
+        name: "Coffee"
     },
     {
         id: 6,
-        name: "Decors"
+        name: "Kitchen accessory"
     },
     {
         id: 7,
-        name: "Plastic"
+        name: "Book"
+    },
+    {
+        id: 8,
+        name: "Art"
+    },
+    {
+        id: 9,
+        name: "Toy"
+    },
+    {
+        id: 10,
+        name: "Others"
     }
 ]
 
@@ -36,7 +48,7 @@ const themeData = [
     },
     {
         id: 2,
-        name: "Coffee"
+        name: "Starbucks"
     },
     {
         id: 3,
@@ -52,12 +64,29 @@ const themeData = [
     },
     {
         id: 6,
-        name: "Seahawk"
+        name: "Seahawks"
     },
     {
         id: 7,
         name: "Sounders"
+    },
+    {
+        id: 8,
+        name: "Coffee"
+    },
+    {
+        id: 9,
+        name: "Art"
+    },
+    {
+        id: 10,
+        name: "Antiques"
+    },
+    {
+        id: 11,
+        name: "Others"
     }
+
 ]
 
 const neighborhoodTypeData = [
@@ -67,12 +96,37 @@ const neighborhoodTypeData = [
     },
     {
         id: 2,
-        name: "Laurelhurst"
+        name: "University Village"
     },
     {
         id: 3,
-        name: "Roosevelt"
+        name: "Georgetown"
+    },
+    {
+        id: 4,
+        name: "Pike Place"
+    },
+    {
+        id: 5,
+        name: "University of Washington"
+    },
+    {
+        id: 6,
+        name: "Downtown Seattle"
+    },
+    {
+        id: 7,
+        name: "Fremont"
+    },
+    {
+        id: 8,
+        name: "International District"
+    },
+    {
+        id: 9,
+        name: "West Lake Center"
     }
+
 ]
 
 const forwhomTypeData = [
@@ -86,11 +140,15 @@ const forwhomTypeData = [
     },
     {
         id: 3,
-        name: "Kids"
+        name: "Kid"
     },
     {
         id: 4,
         name: "Seniors"
+    },
+    {
+        id: 5,
+        name: "Adult"
     }
 ]
 

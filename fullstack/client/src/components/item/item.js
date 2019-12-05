@@ -6,26 +6,38 @@ import { Link } from 'react-router-dom'
 class Item extends React.Component {
     
     render() {
-    const item_style = {
-        width: "290px", 
-        height : "330px"
-    }
     const parameters = {
         pathname: '/view2',
         state: { id:  this.props.id}
     }
+    const img_url = "http://localhost:3001/images/stores/Store_"+this.props.id +".jpg"
     return (
-        
-            <div className="col-sm-6">
-                <div className="cardItem" style={item_style} >
-                    <img className="card-img-top" src="http://img.mm4000.com/file/2/7d/ff204289f9_1044.jpg" alt="Card" width="286px" height="180px" />
-                    <div className="card-body">
-                        <h5 className="card-title">{this.props.storename}</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <Link style= {{alignContent: "center"}} to={parameters} className="btn btn-primary">Detail</Link>
+            <div>
+                <div className="row">
+                    <div className="col-md-7">
+                        <a href=" ">
+                        <img className="img-fluid rounded mb-3 mb-md-0" src={img_url} alt="" width="100%" height="250px" />
+                        </a >
                     </div>
-                </div>
+                    <div className="col-md-5">
+                        <h3>{this.props.storename}</h3>
+                        <p>Phone: {this.props.phone}</p>
+                        <p>Address: {this.props.address}</p >
+                        <Link to={parameters} className="btn btn-primary">Details</Link>
+                    </div>
+                    </div>
+                <br />
             </div>
+    //         <div className="col-sm-6">
+    //             <div className="cardItem" style={item_style} >
+    //                 <img className="card-img-top" src={img_url} alt="Card" width="286px" height="180px" />
+    //                 <div className="card-body">
+    //                     <h5 className="card-title">{this.props.storename}</h5>
+    // <p className="card-text">Address: {this.props.address}</p>
+    //                     <Link style= {{alignContent: "center"}} to={parameters} className="btn btn-primary">Detail</Link>
+    //                 </div>
+    //             </div>
+    //         </div>
     )
     }
 }

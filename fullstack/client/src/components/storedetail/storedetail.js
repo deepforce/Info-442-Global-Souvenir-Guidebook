@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductList from '../productlist/productlist.js'
 // import ReactDOM from 'react-dom';
 // import * as serviceWorker from './serviceWorker';
 
@@ -27,32 +28,30 @@ class StoreDetail extends React.Component {
         }
     }
     render() {
-        const detailstyle =  {
-            marginLeft: "15%"
-        }
-        const imgstyle = {
-            width: "80%"
-        }
         const istyle = {
             fontSize: "24px"
         }
         const neststyle = {
             marginTop: "3%"
         }
-        
+        const linkstyle = {
+            
+            color: "blue"
+        }
         return (
-            <div className="col-sm-6">
-                <h1 className="display-1" style={detailstyle}>Store Name</h1>
+            <div >
                 <hr/>
                 <div className="jumbotron jumbotron-fluid">
                     <div className="container">
-                        <img className="w3-round" src="http://img.mm4000.com/file/2/7d/ff204289f9_1044.jpg" alt="store" style={imgstyle} />
-                        <br/>
                         <div className="container" style={neststyle}>
-        <i className='fas fa-map-marker-alt' style={istyle}></i> &nbsp;<span className="lead"> Location: {this.props.detail[0].Address} </span><br/>
-        <i className='far fa-clock' style={istyle}></i> &nbsp;<span className="lead"> Service Hour: {this.convertTime(this.props.detail[0])}</span><br/>
-        <i className='fas fa-phone' style={istyle}></i> &nbsp;<span className="lead"> Phone Number: {this.props.detail[0].PhoneNum}</span><br/>
-        <i className='fas fa-globe-americas' style={istyle}></i> &nbsp;<span className="lead"> Website: <a href={this.props.detail[0].Website}>{this.props.detail[0].Website}</a></span><br/>
+                            <i className='fas fa-map-marker-alt' style={istyle}></i> <span className="lead"><b>Location:</b> <p>{this.props.detail.data[0].Address}</p> </span>
+                            <i className='far fa-clock' style={istyle}></i> <span className="lead"><b>Service Hour:</b> <p>{this.convertTime(this.props.detail.data[0])}</p></span>
+                            <i className='fas fa-phone' style={istyle}></i> <span className="lead"><b>Phone Number:</b> <p>{this.props.detail.data[0].PhoneNum}</p></span>
+                            <i className='fas fa-globe-americas' style={istyle}></i> <span className="lead"><b>Website:</b> <a style={linkstyle} href={this.props.detail.data[0].Website}><br></br>Visit</a></span>
+
+                            <br></br>
+                            <br></br>
+                            <ProductList list = {this.props.detail.productList}/>
                         </div>
                     </div>
                 </div>

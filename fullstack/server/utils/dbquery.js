@@ -11,7 +11,7 @@ const pool = mariadb.createPool({
 async function db_query(query, req, func) {
     var numRows;
     var numPages;
-    const numPerPage = 6;
+    const numPerPage = 10;
     const page = parseInt(req.query.page,10) || 0;
     const offset = page * numPerPage;
 
@@ -19,9 +19,10 @@ async function db_query(query, req, func) {
     const limit = offset + ', ' + row_count;
     const page_query = " LIMIT " + limit;
     let conn;
+    const db_table = query.substring(query.search("from"))
     try {
         conn = await pool.getConnection();
-        const page_res = await conn.query("SELECT count(*) as numRows FROM tbl_Store");
+        const page_res = await conn.query("SELECT count(DISTINCT S.StoreID) as numRows " + db_table);
         // console.log(page_res); //[ {val: 1}, meta: ... ]
         numRows = page_res[0].numRows;
         numPages = Math.ceil(numRows / numPerPage);
@@ -43,11 +44,13 @@ async function db_query(query, req, func) {
         else responsePayload.pagination = {
             err: 'queried page ' + page + ' is >= to maximum page number ' + numPages
         }
-        func(responsePayload);
+        func(responsePayload)
     } catch (err) {
-      throw err;
+        const error = {data: []}
+      func(error);
     } finally {
       if (conn) return conn.end();
+      
     }
 }
 async function db_query_detail(query, req, func) {
@@ -57,7 +60,7 @@ async function db_query_detail(query, req, func) {
         // console.log(page_res); //[ {val: 1}, meta: ... ]
         const res = await conn.query(query);
         // console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
-        product_query = "SELECT P.ProductName FROM tbl_Product P JOIN tbl_Store_Product SP ON P.ProductID = SP.ProductID WHERE SP.StoreID = " + req.params.storeID;
+        product_query = "SELECT P.ProductID, P.ProductName FROM tbl_Product P JOIN tbl_Store_Product SP ON P.ProductID = SP.ProductID WHERE SP.StoreID = " + req.params.storeID;
         const productList = await conn.query(product_query);
         var responsePayload = {
             data: res,
