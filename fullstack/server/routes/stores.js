@@ -13,8 +13,8 @@ router.get('/', function(req, res, next) {
     "join tbl_Product P on P.ProductID = SP.ProductID ";
 
     // Exist query
-    if (Object.keys(req.query).length >= 2) {
-        query += "WHERE ";
+    if (Object.keys(req.query).length > 2) {
+        query += "WHERE (";
         // Theme Filter 
         if (typeof req.query.theme != 'undefined') {
             product_type_list = req.query.theme.split(",")
@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
                     query += " OR " + "Theme = \"" + product_type_list[i] +"\"";
             }
 
-            query += " AND "
+            query += ") AND ("
         }
 
         // Neighborhood Filter
@@ -38,7 +38,7 @@ router.get('/', function(req, res, next) {
                     query += " OR " + "Neighborhood = \"" + product_type_list[i] +"\"";
             }
 
-            query += " AND "
+            query += ") AND ("
         }
 
         // For Whom Filter
@@ -51,7 +51,7 @@ router.get('/', function(req, res, next) {
                     query += " OR " + "ForWhom = \"" + product_type_list[i] +"\"";
             }
 
-            query += " AND "
+            query += ") AND ("
         }
 
         // Product Type Filter
@@ -63,26 +63,40 @@ router.get('/', function(req, res, next) {
                 else
                     query += " OR " + "ProductType = \"" + product_type_list[i] +"\"";
             }
-            query += " AND "
+
+            query += ") AND ("
         }
-            
+        
+        
         
         if (typeof req.query.search_text != 'undefined')
-            query += "( MATCH(StoreName, Address, Theme, Neighborhood) AGAINST (\'" +
+            query += " MATCH(StoreName, Address, Theme, Neighborhood) AGAINST (\'" +
             req.query.search_text + "\') " +
             "OR MATCH(ProductName, ProductType, ForWhom) AGAINST (\'" +
             req.query.search_text + "\'))"
        
-        if (query.substr(query.length-4) === "AND ")
-            query = query.substr(0, query.length-4)
-        // Order
-        if (typeof req.query.order_param != 'undefined' ) {
-            if (typeof req.query.order != 'undefined')
-                query += "Order BY " + req.query.order_param + " " +req.query.order + " ";
-            else
-                query += "Order BY " + req.query.order_param + " ";
+        if (query.substr(query.length-5) === "AND (")
+            query = query.substr(0, query.length-5)
+
+        
+    }
+    query += "Order BY "
+    var default_order = "S.StoreName"
+    // Order
+    if (typeof req.query.order_param != 'undefined' ) {
+        if (req.query.order_param == 1) {
+            default_order = "S.Budget"
+            query += default_order;
+        }
+        else if (req.query.order_param == 0)
+            query += default_order;
+        else if (req.query.order_param == -1) {
+            default_order = "S.Budget"
+            query += default_order + " DESC ";
         }
     }
+    else
+        query += default_order;
     dbquery.db_query(query, req, function(data_items) {
         res.json(data_items);
     });

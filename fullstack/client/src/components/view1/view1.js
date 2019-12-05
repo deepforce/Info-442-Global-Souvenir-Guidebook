@@ -3,6 +3,7 @@ import "./view1.css"
 import Search from '../search/search.js'
 import Filter from '../filter/filter.js'
 import List from '../list/list.js'
+
 // import ReactDOM from 'react-dom';
 // import * as serviceWorker from './serviceWorker';
 class View1 extends React.Component {
@@ -68,12 +69,12 @@ class View1 extends React.Component {
       // this.state.refresh = !this.state.refresh
       console.log(this.state.searchtext)
     }
-
+    
     render() {
     return (
       // <FilterContext.Provider>
       <div>
-        <Search changeSearch = {this.changeSearch}/>
+        <Search changeSearch = {this.changeSearch}/>  
         <div className={"container-fluid"}>
           <div className="row">
             <Filter changeFilter = {this.changeFilter}/>
