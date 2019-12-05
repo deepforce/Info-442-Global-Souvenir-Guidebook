@@ -16,21 +16,47 @@ router.get('/', function(req, res, next) {
     if (Object.keys(req.query).length >= 2) {
         query += "WHERE ";
         // Theme Filter 
-        if (typeof req.query.theme != 'undefined')
-            query += "Theme = \"" + req.query.theme + "\" " + "AND ";
+        if (typeof req.query.theme != 'undefined') {
+            product_type_list = req.query.theme.split(",")
+            for (var i = 0; i < product_type_list.length; i++) {
+                if (i==0)
+                    query += "Theme = \"" + product_type_list[i] +"\"";
+                else
+                    query += " OR " + "Theme = \"" + product_type_list[i] +"\"";
+            }
+
+            query += " AND "
+        }
 
         // Neighborhood Filter
-        if (typeof req.query.neighborhood!= 'undefined')
-            query += "Neighborhood = \"" + req.query.neighborhood + "\" " + "AND ";
+        if (typeof req.query.neighborhood!= 'undefined') {
+            product_type_list = req.query.neighborhood.split(",")
+            for (var i = 0; i < product_type_list.length; i++) {
+                if (i==0)
+                    query += "Neighborhood = \"" + product_type_list[i] +"\"";
+                else
+                    query += " OR " + "Neighborhood = \"" + product_type_list[i] +"\"";
+            }
+
+            query += " AND "
+        }
 
         // For Whom Filter
         if (typeof req.query.for_whom != 'undefined') {
-            query += "ForWhom = \""+ req.query.for_whom + "\" " + "AND ";
+            product_type_list = req.query.for_whom.split(",")
+            for (var i = 0; i < product_type_list.length; i++) {
+                if (i==0)
+                    query += "ForWhom = \"" + product_type_list[i] +"\"";
+                else
+                    query += " OR " + "ForWhom = \"" + product_type_list[i] +"\"";
+            }
+
+            query += " AND "
         }
 
         // Product Type Filter
         if (typeof req.query.product_type != 'undefined') {
-            product_type_list = req.query.product_type.split(",")
+          product_type_list = req.query.product_type.split(",")
             for (var i = 0; i < product_type_list.length; i++) {
                 if (i==0)
                     query += "ProductType = \"" + product_type_list[i] +"\"";

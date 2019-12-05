@@ -38,11 +38,16 @@ class View1 extends React.Component {
       }
       else {
         var one = filt[filtertype].search(","+filtername)
+        var three = filt[filtertype].search(filtername+",")
         var two = filt[filtertype].search(filtername)
-        if (one != -1)
-          filt[filtertype].replace(","+filtername, "")
-        else if (two != -1)
-          filt[filtertype].replace(filtername, "")
+        
+        console.log(two)
+        if (one !== -1)
+          filt[filtertype]=filt[filtertype].replace(","+filtername, "")
+        else if (three !== -1)
+          filt[filtertype]=filt[filtertype].replace(filtername+",", "")
+        else if (two !== -1)
+          filt[filtertype] = filt[filtertype].replace(filtername, "")
         this.setState(filt)
         this.setState({
           refresh: !this.state.refresh
