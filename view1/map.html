@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 600px;  /* The height is 600 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron text-center" style="margin-bottom: 0%; height: 180px;">
+            <h1 style="margin-top: 6px;">Souvenir Guidebook</h1>
+            <p>choose one mark! </p>
+        </div>
+    <!--The div element for the map -->
+    <div id="map"></div><br>  </br>
+    <script>
+// Initialize and add the map
+function initMap() {
+  var Seattle = {lat: 47.608013, lng: -122.335167};
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: Seattle});
+  // The marker, positioned at Seattle
+  var marker = new google.maps.Marker({position: Seattle, map: map});
+
+  marker.addListener("click", function() {
+      document.location.href = 'view1.html';
+  })
+};
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2fl1w99v9hxk0LL4ryYm8xdZwy-R8xnE&callback=initMap">
+    </script>
+  </body>
+</html>
